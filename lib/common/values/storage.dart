@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 /// 多语言
 const String STORAGE_LANGUAGE_CODE = 'language_code';
 

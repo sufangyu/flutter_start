@@ -55,11 +55,6 @@ class SignUpController extends GetxController {
   }
 
   @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
   void dispose() {
     fullNameController.dispose();
     emailController.dispose();

@@ -1,7 +1,6 @@
 import 'package:flutter_start/common/store/index.dart';
 import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_start/core/http/index.dart';
-import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 
 class SwitchEnvController extends GetxController {

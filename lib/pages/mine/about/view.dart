@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_start/common/store/index.dart';
 import 'package:flutter_start/common/widgets/index.dart';
-import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import 'controller.dart';
 

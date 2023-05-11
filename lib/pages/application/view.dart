@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_start/common/values/index.dart';
-import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_start/pages/bookmarks/index.dart';
 import 'package:flutter_start/pages/category/index.dart';
 import 'package:flutter_start/pages/main/index.dart';

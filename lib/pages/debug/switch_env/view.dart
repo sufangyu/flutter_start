@@ -19,7 +19,7 @@ class SwitchEnvPage extends GetView<SwitchEnvController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              color: const Color(0xffff2f2f2),
+              color: const Color(0xfff2f2f2),
               width: double.infinity,
               padding: EdgeInsets.symmetric(vertical: 32.h),
               child: Column(

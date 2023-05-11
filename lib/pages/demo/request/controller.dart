@@ -74,7 +74,7 @@ class RequestController extends GetxController {
 
   Future<void> delete() async {
     var result = await RequestDemoAPI.deleteUser(id: '');
-    if (result?.success == false) {
+    if (result.success == false) {
       return;
     }
 

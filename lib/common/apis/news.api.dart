@@ -59,7 +59,7 @@ class NewsAPI {
       // cacheDisk: cacheDisk,
       // cacheKey: STORAGE_INDEX_NEWS_CACHE_KEY,
     );
-    LoggerUtil.debug("response::${response}");
+    LoggerUtil.debug("response::$response");
     return NewsPageListResponseEntity.fromJson(response?.data);
   }
 }

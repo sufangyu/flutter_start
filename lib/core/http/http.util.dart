@@ -42,7 +42,7 @@ class HttpUtil {
     _dio.interceptors.add(FailResponseInterceptor());
     if (kDebugMode) {
       // FIXME: 流、二进制文件会拦截报错保存
-      // _dio.interceptors.add(DioLogInterceptor());
+      _dio.interceptors.add(DioLogInterceptor());
     }
   }
 
