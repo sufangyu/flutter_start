@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'common/controllers/index.dart';
 import 'common/store/index.dart';
 import 'common/widgets/index.dart';
 import 'core/utils/index.dart';
@@ -20,6 +21,8 @@ class Global {
     // 示例化 loading
     Loading();
 
+    // APP 生命周期监听
+    Get.put(LifeCycleController());
     // 初始化全局缓存
     await Get.putAsync<StorageService>(() => StorageService().init());
     // 全局状态

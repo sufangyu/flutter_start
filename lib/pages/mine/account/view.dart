@@ -79,6 +79,26 @@ class AccountPage extends GetView<AccountController> {
                   leading: const Icon(Icons.question_answer_outlined),
                 ),
               ),
+              // 切换环境
+              !ConfigStore.to.isRelease
+                  ? Column(
+                      children: [
+                        divider10Px(),
+                        Container(
+                          color: Colors.white,
+                          child: ListTile(
+                            onTap: () =>
+                                Get.toNamed(AppRoutes.DEBUG_SWITCH_ENV),
+                            title: Text(
+                              "切换API环境",
+                              style: TextStyle(fontSize: 16.sp),
+                            ),
+                            leading: const Icon(Icons.bug_report_outlined),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Container(),
             ],
           ),
         ),

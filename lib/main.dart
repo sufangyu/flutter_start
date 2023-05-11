@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bugly/flutter_bugly.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_start/common/langs/translation_service.dart';
@@ -12,8 +13,25 @@ import 'common/style/index.dart';
 import 'global.dart';
 
 Future<void> main() async {
-  await Global.init();
-  runApp(const MyApp());
+  // await Global.init();
+  // runApp(const MyApp());
+
+  FlutterBugly.postCatchedException(
+    () async {
+      // 如果需要 ensureInitialized，请在这里运行。
+      // WidgetsFlutterBinding.ensureInitialized();
+      await Global.init();
+      runApp(const MyApp());
+      FlutterBugly.init(
+        androidAppId: "4aaf7c60eb",
+        iOSAppId: "206790fb8a",
+      );
+    },
+    onException: (FlutterErrorDetails details) {
+      debugPrint("onException::${details.toString()}");
+    },
+    debugUpload: true,
+  );
 }
 
 class MyApp extends StatelessWidget {

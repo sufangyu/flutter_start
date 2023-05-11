@@ -12,4 +12,9 @@ class AccountController extends GetxController {
     {"label": "相机应用", "icon": Icons.add_a_photo_outlined},
     {"label": "权限申请", "icon": Icons.access_alarm},
   ];
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
 }
