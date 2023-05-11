@@ -47,8 +47,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>io.flutter.embedded_views_preview</key>
+    <true/>
 	<key>NSCameraUsageDescription</key>
-    <string>应用需要访问相机，以便于相机拍摄，上传、发布照片</string>
+    <string>应用需要访问相机，以便于相机拍摄，上传、发布照片，二维码识别</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>应用需要访问麦克风，以便于视频录制、语音识别、语音聊天</string>
     <key>NSPhotoLibraryUsageDescription</key>

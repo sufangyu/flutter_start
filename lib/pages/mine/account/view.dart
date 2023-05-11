@@ -22,16 +22,16 @@ class AccountPage extends GetView<AccountController> {
           // backgroundColor: Colors.yellow,
           actions: [
             Container(
-              padding: EdgeInsets.only(right: 16.w),
+              padding: EdgeInsets.only(right: 20.w),
               width: 36.w,
               child: IconButton(
                 padding: const EdgeInsets.all(0.0),
                 icon: const Icon(Icons.crop_free),
-                onPressed: () {},
+                onPressed: () => Get.toNamed(AppRoutes.SCAN),
               ),
             ),
             Container(
-              padding: EdgeInsets.only(right: 16.w),
+              padding: EdgeInsets.only(right: 20.w),
               width: 36.w,
               child: IconButton(
                 padding: const EdgeInsets.all(0.0),

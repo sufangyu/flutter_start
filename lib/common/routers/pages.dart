@@ -18,6 +18,7 @@ import 'package:flutter_start/pages/main/index.dart';
 import 'package:flutter_start/pages/mine/about/index.dart';
 import 'package:flutter_start/pages/mine/account/index.dart';
 import 'package:flutter_start/pages/mine/setting/index.dart';
+import 'package:flutter_start/pages/scan/index.dart';
 import 'package:get/get.dart';
 
 import 'names.dart';
@@ -36,7 +37,7 @@ class AppPages {
   /// 404 页面
   static final unknownRoute = GetPage(
     name: AppRoutes.NOT_FOUND,
-    page: () => const Text('404'),
+    page: () => const Text('Not Found!'),
     // page: () => NotfoundView(),
   );
 
@@ -62,6 +63,12 @@ class AppPages {
       title: "注册页",
       page: () => const SignUpPage(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.SCAN,
+      title: '扫描',
+      page: () => const ScanPage(),
+      binding: ScanBinding(),
     ),
     // 需要登录
     GetPage(

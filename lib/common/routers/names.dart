@@ -6,6 +6,7 @@ class AppRoutes {
   static const SIGN_UP = '/sign_up';
   static const NOT_FOUND = '/not_found';
   static const GUIDE_SCREEN = '/guide_screen';
+  static const SCAN = '/scan';
 
   static const APPLICATION = '/application';
   static const MAIN = '/main';

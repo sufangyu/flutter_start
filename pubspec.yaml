@@ -36,8 +36,12 @@ dependencies:
   # 存储路径
   path_provider: ^2.0.14
 
-  # 文件选择
+  # 文件/图片选择
   file_picker: ^5.2.9
+  image_picker: ^0.8.7+4
+
+  # 条形码、二维码识别
+  scan: ^1.6.0
 
   # 打开指定资源（跳转App Store）
   url_launcher: ^6.1.10
