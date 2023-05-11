@@ -17,22 +17,43 @@ class DialogBase extends StatelessWidget {
     required this.body,
     this.placement = Placement.center,
     this.maskColor,
-    this.bodyColor = Colors.white,
+    this.dialogColor = Colors.white,
+    this.dialogRadius = 32.0,
     this.showClose = false,
     this.confirmText = "确认",
-    this.actions,
     this.onTap,
+    this.actions,
   });
 
+  /// 弹窗标题
   final String? title;
+
+  /// 是否显示关闭按钮
   final bool? showClose;
+
+  /// 弹窗主内容
   final Widget body;
+
+  /// 弹窗显示位置
   final Placement? placement;
+
+  /// 遮罩层颜色
   final Color? maskColor;
-  final Color? bodyColor;
+
+  /// 弹窗背景色
+  final Color? dialogColor;
+
+  /// 弹窗圆角
+  final double? dialogRadius;
+
+  /// 确定按钮文本
   final String confirmText;
-  final Widget? actions;
+
+  /// 确定按钮回调函数
   final void Function()? onTap;
+
+  /// 自定义按钮组
+  final Widget? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -51,23 +72,27 @@ class DialogBase extends StatelessWidget {
           alignment: placement == Placement.bottomCenter
               ? Alignment.bottomCenter
               : Alignment.center,
-          child: Container(
-            decoration: BoxDecoration(
-              color: bodyColor,
-              borderRadius: const BorderRadius.all(Radius.circular(32)),
-            ),
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              // 自适应内容高度
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _buildHeader(context),
-                const SizedBox(height: 16),
-                // 主体内容
-                body,
-                const SizedBox(height: 32),
-                _buildFooter(context),
-              ],
+          child: Material(
+            borderRadius: BorderRadius.all(Radius.circular(dialogRadius!)),
+            clipBehavior: Clip.hardEdge,
+            // shape: RoundedRectangleBorder(
+            //   borderRadius: BorderRadius.all(Radius.circular(32.0)),
+            // ),
+            child: Container(
+              color: dialogColor,
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                // 自适应内容高度
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _buildHeader(context),
+                  const SizedBox(height: 16),
+                  // 主体内容
+                  body,
+                  const SizedBox(height: 32),
+                  _buildFooter(context),
+                ],
+              ),
             ),
           ),
         )
