@@ -43,7 +43,7 @@ class ScanPageController extends GetxController {
   void handleScanResult(String? result) {
     LoggerUtil.debug("识别结果::$result");
     if (result == null) {
-      Loading.error('二维码无法识别，请重试');
+      LoadingUtil.error('二维码无法识别，请重试');
       return;
     }
     // TODO: 处理识别结果

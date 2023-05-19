@@ -55,7 +55,7 @@ class DialogController extends GetxController {
               padding: EdgeInsets.symmetric(vertical: 13.h, horizontal: 40.w),
               onPressed: () {
                 Get.back();
-                Loading.info("点了取消");
+                LoadingUtil.info("点了取消");
               },
               child: const Text("取消", style: TextStyle(fontSize: 18)),
             ),
@@ -65,7 +65,7 @@ class DialogController extends GetxController {
               padding: EdgeInsets.symmetric(vertical: 13.h, horizontal: 66.w),
               onPressed: () {
                 Get.back();
-                Loading.info("点了确认");
+                LoadingUtil.info("点了确认");
               },
               child: const Text("确认", style: TextStyle(fontSize: 18)),
             ),

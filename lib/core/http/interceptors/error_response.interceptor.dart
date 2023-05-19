@@ -9,7 +9,7 @@ class HttpErrorResponseInterceptor extends Interceptor {
     DioError err,
     ErrorInterceptorHandler handler,
   ) async {
-    Loading.dismiss();
+    LoadingUtil.dismiss();
     ErrorEntity errInfo = createErrorEntity(err);
     onErrorHandler(errInfo);
 
@@ -21,7 +21,7 @@ class HttpErrorResponseInterceptor extends Interceptor {
     LoggerUtil.error(
         'error.code -> ${errInfo.code}, error.message -> ${errInfo.message}');
     String errMsg = "${errInfo.message}-${errInfo.code}";
-    Loading.error(errMsg);
+    LoadingUtil.error(errMsg);
 
     switch (errInfo.code) {
       case 401:

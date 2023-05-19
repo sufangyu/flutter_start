@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'color.dart';
+import 'color.style.dart';
 
 class AppTheme {
   static const horizontalMargin = 16.0;

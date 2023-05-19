@@ -55,18 +55,18 @@ class SignInController extends GetxController {
       toastInfo(msg: '请先同意协议');
       return;
     }
-    if (!duIsEmail(emailController.value.text)) {
+    if (!ValidatorUtil.isEmail(emailController.value.text)) {
       toastInfo(msg: '请正确输入邮件');
       return;
     }
-    if (!duCheckStringLength(passController.value.text, 6)) {
+    if (!ValidatorUtil.checkStringLength(passController.value.text, 6)) {
       toastInfo(msg: '密码不能小于6位');
       return;
     }
 
     UserLoginRequestEntity params = UserLoginRequestEntity(
       email: emailController.value.text,
-      password: duSHA256(passController.value.text),
+      password: SecurityUtil.getSHA256(passController.value.text),
     );
     UserLoginResponseEntity userProfile = await UserAPI.login(
       params,
@@ -92,7 +92,7 @@ class SignInController extends GetxController {
 
     UserLoginRequestEntity params = UserLoginRequestEntity(
       email: emailController.value.text,
-      password: duSHA256(passController.value.text),
+      password: SecurityUtil.getSHA256(passController.value.text),
     );
     UserLoginResponseEntity userProfile = await UserAPI.login(
       params,

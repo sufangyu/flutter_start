@@ -46,7 +46,7 @@ class AppUpdateUtil {
     LoggerUtil.info('latestDescription, ${_appUpdateInfo.latestDescription}');
 
     // if (!isBackground) {
-    //   Loading.dismiss();
+    //   LoadingUtil.dismiss();
     // }
 
     // 比较版本

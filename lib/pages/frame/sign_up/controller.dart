@@ -39,15 +39,15 @@ class SignUpController extends GetxController {
     //   toastInfo(msg: '密码不能小于6位');
     //   return;
     // }
-    if (!duCheckStringLength(fullNameController.value.text, 5)) {
+    if (!ValidatorUtil.checkStringLength(fullNameController.value.text, 5)) {
       toastInfo(msg: '用户名不能小于5位');
       return;
     }
-    if (!duIsEmail(emailController.value.text)) {
+    if (!ValidatorUtil.isEmail(emailController.value.text)) {
       toastInfo(msg: '请正确输入邮件');
       return;
     }
-    if (!duCheckStringLength(passController.value.text, 6)) {
+    if (!ValidatorUtil.checkStringLength(passController.value.text, 6)) {
       toastInfo(msg: '密码不能小于6位');
       return;
     }

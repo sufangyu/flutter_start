@@ -15,7 +15,7 @@ class FailResponseInterceptor extends Interceptor {
     switch (responseType) {
       case ResponseType.json:
       case ResponseType.plain:
-        Loading.dismiss();
+        LoadingUtil.dismiss();
         try {
           BaseResponseEntity result =
               BaseResponseEntity.fromJson(response.data);
@@ -39,7 +39,7 @@ class FailResponseInterceptor extends Interceptor {
         'result.code -> ${result.code}, result.message -> ${result.message}');
 
     if (extra!['hasErrorTips'] == true) {
-      Loading.error(result.message ?? '请求处理失败');
+      LoadingUtil.error(result.message ?? '请求处理失败');
     }
 
     switch (result.code) {

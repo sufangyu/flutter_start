@@ -1,5 +1,5 @@
 library styles;
 
-export 'color.dart';
-export 'theme.dart';
+export 'color.style.dart';
+export 'theme.style.dart';
 export 'text.style.dart';

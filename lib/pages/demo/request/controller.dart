@@ -79,7 +79,7 @@ class RequestController extends GetxController {
       return;
     }
 
-    Loading.success("删除成功");
+    LoadingUtil.success("删除成功");
   }
 
   Future<Response?> put() async {
@@ -129,7 +129,7 @@ class RequestController extends GetxController {
       onReceiveProgress: (int count, int total) {
         downloadRatio = (count / total);
         if (downloadRatio >= 1.0) {
-          Loading.success("下载完成");
+          LoadingUtil.success("下载完成");
         }
         // print("downloadWithGet::count->$count, total->$total");
       },
@@ -153,10 +153,10 @@ class RequestController extends GetxController {
 
     if (downloadedFile.existsSync()) {
       downloadedFile.delete();
-      Loading.success('删除成功');
+      LoadingUtil.success('删除成功');
       downloadRatio = 0.0;
     } else {
-      Loading.error('文件不存在');
+      LoadingUtil.error('文件不存在');
     }
   }
 }

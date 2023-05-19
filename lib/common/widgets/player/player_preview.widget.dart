@@ -134,7 +134,7 @@ class _VideoPlayerPreviewWidgetState extends State<VideoPlayerPreviewWidget> {
       }
     } catch (err) {
       LoggerUtil.error(err.toString());
-      Loading.error('Video file error');
+      LoadingUtil.error('Video file error');
       setState(() {
         _isError = true;
       });

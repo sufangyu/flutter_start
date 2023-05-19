@@ -19,7 +19,7 @@ class Global {
 
     setSystemUi();
     // 示例化 loading
-    Loading();
+    LoadingUtil();
 
     // APP 生命周期监听
     Get.put(LifeCycleController());

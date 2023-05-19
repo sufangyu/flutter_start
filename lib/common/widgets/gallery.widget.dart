@@ -202,7 +202,7 @@ class _GalleryWidgetState extends State<GalleryWidget>
             : null,
       );
     } catch (_) {
-      Loading.error('Video url load error.');
+      LoadingUtil.error('Video url load error.');
     } finally {
       if (mounted) {
         setState(() {});

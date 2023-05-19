@@ -94,7 +94,7 @@ class HttpUtil {
       LoggerUtil.error("dio.request DioError::${err.toString()}");
     } on Exception catch (e) {
       LoggerUtil.error("dio.request Exception::${e.toString()}");
-      Loading.error(e.toString());
+      LoadingUtil.error(e.toString());
     }
 
     return null;
@@ -331,7 +331,7 @@ class HttpUtil {
         cancelToken: cancelToken ?? _cancelToken,
         onReceiveProgress: (int count, int total) {
           if (count >= total) {
-            Loading.dismiss();
+            LoadingUtil.dismiss();
           }
 
           if (onReceiveProgress != null) {
@@ -343,14 +343,14 @@ class HttpUtil {
     } on DioError catch (err) {
       LoggerUtil.error("dio.download DioError::${err.toString()}");
       if (CancelToken.isCancel(err)) {
-        Loading.info("已取消下载");
+        LoadingUtil.info("已取消下载");
       } else {
-        Loading.error(err.message);
+        LoadingUtil.error(err.message);
       }
     } on Exception catch (e) {
       LoggerUtil.error("dio.download Exception::${e.toString()}");
       // OS Error: Is a directory, errno = 21 = 没有文件名
-      Loading.error(e.toString());
+      LoadingUtil.error(e.toString());
     }
     return null;
   }

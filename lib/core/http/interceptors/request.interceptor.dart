@@ -61,7 +61,7 @@ class HttpRequestInterceptor extends Interceptor {
           loadingMsg = '提交中...';
           break;
       }
-      Loading.show(options.extra['loadingText'] ?? loadingMsg);
+      LoadingUtil.show(options.extra['loadingText'] ?? loadingMsg);
     }
   }
 }
