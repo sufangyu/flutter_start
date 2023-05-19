@@ -8,10 +8,10 @@ class BottomSheetController extends GetxController {
   void openSimpleLineText() {
     BottomSheetWidget.show(
       Get.context!,
-      Column(
+      const Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: const [
+        children: [
           Center(child: Text("一行文本")),
         ],
       ),

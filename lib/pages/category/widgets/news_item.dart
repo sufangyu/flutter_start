@@ -104,7 +104,7 @@ Widget newsListItem(NewsItem item) {
                       maxWidth: 100.w,
                     ),
                     child: Text(
-                      '• ${timeLineFormat(item.addtime ?? DateTime(0))}',
+                      '• ${DateUtil.timeLineFormat(item.addtime ?? DateTime(0))}',
                       style: TextStyle(
                         fontFamily: 'Avenir',
                         fontWeight: FontWeight.normal,

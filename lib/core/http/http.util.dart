@@ -1,4 +1,5 @@
 import 'package:cookie_jar/cookie_jar.dart';
+import 'package:curl_logger_dio_interceptor/curl_logger_dio_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:dio_log/interceptor/dio_log_interceptor.dart';
@@ -41,6 +42,7 @@ class HttpUtil {
     _dio.interceptors.add(HttpErrorResponseInterceptor());
     _dio.interceptors.add(FailResponseInterceptor());
     if (kDebugMode) {
+      _dio.interceptors.add(CurlLoggerDioInterceptor(printOnSuccess: false));
       // FIXME: 流、二进制文件会拦截报错保存
       _dio.interceptors.add(DioLogInterceptor());
     }

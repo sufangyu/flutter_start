@@ -10,6 +10,8 @@ import 'package:flutter_start/pages/demo/bottom_sheet/index.dart';
 import 'package:flutter_start/pages/demo/dialog/index.dart';
 import 'package:flutter_start/pages/demo/permission/index.dart';
 import 'package:flutter_start/pages/demo/request/index.dart';
+import 'package:flutter_start/pages/demo/wechat/post/index.dart';
+import 'package:flutter_start/pages/demo/wechat/timeline/index.dart';
 import 'package:flutter_start/pages/detail/index.dart';
 import 'package:flutter_start/pages/frame/guide/index.dart';
 import 'package:flutter_start/pages/frame/sign_in/index.dart';
@@ -26,7 +28,8 @@ import 'observers.dart';
 
 class AppPages {
   /// 初始化页面
-  static const INITIAL = AppRoutes.GUIDE_SCREEN;
+  // static const INITIAL = AppRoutes.GUIDE_SCREEN;
+  static const INITIAL = AppRoutes.DEMO_WECHAT_TIMELINE;
 
   /// 全局路由监听器
   static final RouteObserver<Route> observer = RouteObservers();
@@ -130,7 +133,7 @@ class AppPages {
       binding: SwitchEnvBinding(),
     ),
 
-    /// DEMO
+    //////////////////////// DEMO ////////////////////////
     GetPage(
       name: AppRoutes.DEMO_PERMISSION,
       title: '权限申请',
@@ -142,6 +145,18 @@ class AppPages {
       title: '网络请求',
       page: () => const RequestPage(),
       binding: RequestBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.DEMO_WECHAT_TIMELINE,
+      title: '朋友圈',
+      page: () => const WechatTimelinePage(),
+      binding: WechatTimelineBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.DEMO_WECHAT_ASSETS_PICKER,
+      title: '发表',
+      page: () => const WechatPostPage(),
+      binding: WechatPostBinding(),
     ),
     GetPage(
       name: AppRoutes.DEMO_BOTTOM_SHEET,

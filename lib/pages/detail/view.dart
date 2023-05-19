@@ -164,7 +164,7 @@ class DetailPage extends GetView<DetailController> {
                     maxWidth: 120,
                   ),
                   child: Text(
-                    '• ${timeLineFormat(controller.state.newsDetail?.addtime)}',
+                    '• ${DateUtil.timeLineFormat(controller.state.newsDetail?.addtime)}',
                     style: TextStyle(
                       fontFamily: 'Avenir',
                       fontWeight: FontWeight.normal,

@@ -26,7 +26,7 @@ class MainController extends GetxController {
     Entry(
       label: "图片选择",
       icon: Icons.image_search,
-      path: AppRoutes.MINE_SETTING,
+      path: AppRoutes.DEMO_WECHAT_ASSETS_PICKER,
     ),
     Entry(
       label: "地图、定位",

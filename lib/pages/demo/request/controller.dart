@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_start/common/apis/index.dart';
 import 'package:flutter_start/common/entities/index.dart';
 import 'package:flutter_start/common/widgets/toast.widget.dart';
@@ -109,7 +110,7 @@ class RequestController extends GetxController {
       filePath: file.path ?? '',
       fileName: file.name,
       onSendProgress: (int count, int total) {
-        print("$count, $total"); // 取精度，如：
+        debugPrint("$count, $total"); // 取精度，如：
         if (count >= total) {
           LoggerUtil.info("上传完成");
         }

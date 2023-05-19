@@ -3,6 +3,7 @@ import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 
+/// 监听全局的 app 生命功能周期
 class LifeCycleController extends SuperController {
   /// 应用程序已销毁
   @override

@@ -14,7 +14,7 @@ class WelcomeMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     LoggerUtil.info(
-        "APP第一次打开::${ConfigStore.to.isAlreadyOpen};已登录::${UserStore.to().isLogin}");
+        "APP是否已打开过::${ConfigStore.to.isAlreadyOpen}, 已登录::${UserStore.to().isLogin}");
     if (ConfigStore.to.isAlreadyOpen == false) {
       // 第一次打开
       return null;

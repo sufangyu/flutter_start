@@ -7,3 +7,4 @@ export 'category.entity.dart';
 export 'channel.entity.dart';
 export 'app.entity.dart';
 export 'request.entity.dart';
+export 'wechat.entity.dart';

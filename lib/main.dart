@@ -30,7 +30,7 @@ Future<void> main() async {
     onException: (FlutterErrorDetails details) {
       debugPrint("onException::${details.toString()}");
     },
-    debugUpload: true,
+    debugUpload: false,
   );
 }
 
@@ -41,6 +41,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
+      // 设置 true, 解决键盘无法顶起底部输入框
+      useInheritedMediaQuery: true,
       builder: (BuildContext context, Widget? widget) => RefreshConfiguration(
         headerBuilder: () => const ClassicHeader(
           idleText: '下拉刷新',

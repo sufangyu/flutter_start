@@ -25,4 +25,9 @@ class AppRoutes {
   static const DEMO_REQUEST = '/demo/request';
   static const DEMO_BOTTOM_SHEET = '/demo/bottom_sheet';
   static const DEMO_DIALOG = '/demo/dialog';
+  static const DEMO_WECHAT_TIMELINE = '/demo/wechat_timeline';
+  static const DEMO_WECHAT_ASSETS_PICKER = '/demo/wechat_assets_picker';
+
+  /// TEST
+  static const TEST_BOTTOM_INPUT = '/test/bottom_input';
 }

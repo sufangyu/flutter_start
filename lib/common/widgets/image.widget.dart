@@ -16,8 +16,14 @@ Widget netImageCached(
   /// 是否是圆形
   bool isCircular = false,
 
+  /// 圆角
+  BorderRadiusGeometry borderRadius = Radii.k6pxRadius,
+
   /// 外边距
   EdgeInsetsGeometry? margin,
+
+  /// 填充类型
+  BoxFit fit = BoxFit.cover,
 }) {
   return CachedNetworkImage(
     imageUrl: url,
@@ -26,12 +32,8 @@ Widget netImageCached(
       width: width.w,
       margin: margin,
       decoration: BoxDecoration(
-        borderRadius:
-            isCircular ? BorderRadius.circular(width) : Radii.k6pxRadius,
-        image: DecorationImage(
-          image: imageProvider,
-          fit: BoxFit.cover,
-        ),
+        borderRadius: isCircular ? BorderRadius.circular(width) : borderRadius,
+        image: DecorationImage(image: imageProvider, fit: fit),
       ),
     ),
     placeholder: (context, url) {
