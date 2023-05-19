@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_start/common/entities/index.dart';
 import 'package:flutter_start/common/routers/index.dart';
-import 'package:flutter_start/common/style/text.style.dart';
+import 'package:flutter_start/common/styles/index.dart';
 import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_start/core/utils/index.dart';
 import 'package:video_player/video_player.dart';

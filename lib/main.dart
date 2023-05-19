@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 import 'common/routers/index.dart';
 import 'common/store/index.dart';
-import 'common/style/index.dart';
+import 'common/styles/index.dart';
 import 'global.dart';
 
 Future<void> main() async {
