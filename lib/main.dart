@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_start/common/langs/translation_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_start/config/index.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:get/get.dart';
 
@@ -23,8 +24,8 @@ Future<void> main() async {
       await Global.init();
       runApp(const MyApp());
       FlutterBugly.init(
-        androidAppId: "4aaf7c60eb",
-        iOSAppId: "206790fb8a",
+        androidAppId: buglyAndroidAppId,
+        iOSAppId: buglyIOSAppId,
       );
     },
     onException: (FlutterErrorDetails details) {
