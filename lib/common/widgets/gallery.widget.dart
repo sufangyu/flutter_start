@@ -235,7 +235,7 @@ class _GalleryWidgetState extends State<GalleryWidget>
     // 默认加载中
     Widget body = const Text("loading...");
     // 数量
-    int _itemsCount = widget.items?.length ?? widget.imgUrls?.length ?? 0;
+    int itemsCount = widget.items?.length ?? widget.imgUrls?.length ?? 0;
 
     // 根据类型构建不同的 view
     switch (_galleryType) {
@@ -260,8 +260,8 @@ class _GalleryWidgetState extends State<GalleryWidget>
         extendBodyBehindAppBar: true, // 是否延伸body至顶部
         backgroundColor: Colors.black,
         appBar: _galleryType == GalleryType.assets
-            ? _buildPublishNav(_itemsCount)
-            : _buildPreviewNav(_itemsCount),
+            ? _buildPublishNav(itemsCount)
+            : _buildPreviewNav(itemsCount),
         body: body,
         bottomSheet: _buildTimelineBar(_isShowAppBar),
       ),

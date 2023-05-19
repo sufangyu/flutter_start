@@ -4,8 +4,6 @@ import 'package:flutter_start/pages/demo/wechat/post/index.dart';
 import 'package:get/get.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
-import 'entity.dart';
-
 class WechatTimelineState {
   /// 已选择图片列表
   final RxList<AssetEntity> _selectedAssets = <AssetEntity>[].obs;
@@ -20,7 +18,7 @@ class WechatTimelineState {
 
   /// 朋友圈
   final RxList<TimelineEntity> _timeline = <TimelineEntity>[].obs;
-  List<TimelineEntity> get timeline => _timeline ?? [];
+  List<TimelineEntity> get timeline => _timeline;
   set timeline(List<TimelineEntity> value) => _timeline.value = value;
 
   /// 是否显示 appbar 信息
