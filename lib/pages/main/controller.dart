@@ -26,7 +26,7 @@ class MainController extends GetxController {
     Entry(
       label: "图片选择",
       icon: Icons.image_search,
-      path: AppRoutes.DEMO_WECHAT_ASSETS_PICKER,
+      path: AppRoutes.DEMO_WECHAT_TIMELINE,
     ),
     Entry(
       label: "地图、定位",
@@ -36,7 +36,7 @@ class MainController extends GetxController {
     Entry(
       label: "相机应用",
       icon: Icons.camera_alt_outlined,
-      path: AppRoutes.MINE_SETTING,
+      path: AppRoutes.SCAN,
     ),
     Entry(
       label: "权限申请",
@@ -76,6 +76,11 @@ class MainController extends GetxController {
       label: "结果页",
       icon: Icons.wallet,
       path: AppRoutes.DEMO_DIALOG,
+    ),
+    Entry(
+      label: "验证码",
+      icon: Icons.spellcheck,
+      path: AppRoutes.DEMO_CODE_INPUT_FILED,
     ),
   ];
 

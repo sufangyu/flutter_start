@@ -5,8 +5,6 @@ import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_start/pages/demo/wechat/timeline/index.dart';
 import 'package:get/get.dart';
 
-import '../entity.dart';
-
 class TimelineHeader extends GetView<WechatTimelineController> {
   const TimelineHeader({super.key});
 

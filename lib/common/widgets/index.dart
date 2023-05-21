@@ -15,3 +15,4 @@ export 'text.widget.dart';
 export 'gallery.widget.dart';
 export 'camera/index.dart';
 export 'player/index.dart';
+export 'code_input_filed/index.dart';

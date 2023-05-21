@@ -7,6 +7,7 @@ import 'package:flutter_start/pages/category/bindings.dart';
 import 'package:flutter_start/pages/category/view.dart';
 import 'package:flutter_start/pages/debug/switch_env/index.dart';
 import 'package:flutter_start/pages/demo/bottom_sheet/index.dart';
+import 'package:flutter_start/pages/demo/code_input_filed/index.dart';
 import 'package:flutter_start/pages/demo/dialog/index.dart';
 import 'package:flutter_start/pages/demo/permission/index.dart';
 import 'package:flutter_start/pages/demo/request/index.dart';
@@ -28,8 +29,8 @@ import 'observers.dart';
 
 class AppPages {
   /// 初始化页面
-  // static const INITIAL = AppRoutes.GUIDE_SCREEN;
-  static const INITIAL = AppRoutes.DEMO_WECHAT_TIMELINE;
+  static const INITIAL = AppRoutes.GUIDE_SCREEN;
+  // static const INITIAL = AppRoutes.DEMO_CODE_INPUT_FILED;
 
   /// 全局路由监听器
   static final RouteObserver<Route> observer = RouteObservers();
@@ -169,6 +170,12 @@ class AppPages {
       title: '弹窗',
       page: () => const DialogPage(),
       binding: DialogBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.DEMO_CODE_INPUT_FILED,
+      title: '验证码输入框',
+      page: () => const CodeInputPage(),
+      binding: CodeInputBinding(),
     ),
   ];
 }

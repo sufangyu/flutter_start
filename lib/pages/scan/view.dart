@@ -14,6 +14,7 @@ class ScanPage extends GetView<ScanPageController> {
       appBar: AppBar(
         title: const Text('扫描', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       backgroundColor: const Color(0xFF000000),
       body: Stack(
@@ -28,10 +29,10 @@ class ScanPage extends GetView<ScanPageController> {
             },
           ),
           Positioned(
-            left: 40.w,
-            bottom: 180.h,
+            left: 60.w,
+            top: 120.h,
             child: const Text(
-              "请将二维码或条形码对准至框内，即可自动扫描",
+              "请将二维码对准至框内，即可自动扫描",
               style: TextStyle(color: Colors.white),
             ),
           ),
