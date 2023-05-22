@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'model.dart';
 import 'widget/input_cell.widget.dart';
@@ -10,6 +11,7 @@ class CodeInputFiled extends StatefulWidget {
     this.length,
     this.type,
     this.onChanged,
+    this.regExp,
   }) : super(key: key);
 
   // 已经输入验证码
@@ -24,6 +26,9 @@ class CodeInputFiled extends StatefulWidget {
   /// 输入值回调函数
   final void Function(String val)? onChanged;
 
+  /// 输入值的控制. 默认只支持数字
+  final Pattern? regExp;
+
   @override
   State<CodeInputFiled> createState() => _CodeInputFiledState();
 }
@@ -33,6 +38,9 @@ class _CodeInputFiledState extends State<CodeInputFiled> {
   late int _length;
   // 输入框样式
   late CodeInputType _type;
+
+  // 输入值的控制. 默认只支持数字
+  late Pattern _regExp;
 
   // 输入框
   final TextEditingController _controller = TextEditingController(text: '');
@@ -45,6 +53,7 @@ class _CodeInputFiledState extends State<CodeInputFiled> {
 
     _length = widget.length ?? 6;
     _type = widget.type ?? CodeInputType.squareBox;
+    _regExp = widget.regExp ?? RegExp("[0-9]");
   }
 
   Widget _buildInputOpacity() {
@@ -54,10 +63,10 @@ class _CodeInputFiledState extends State<CodeInputFiled> {
         controller: _controller,
         maxLength: _length,
         maxLines: 1,
-        //只能输入字母与数字
-        // inputFormatters: [
-        //   WhitelistingTextInputFormatter(RegExp("[a-z,0-9,A-Z]"))
-        // ],
+        // 只能输入字母与数字
+        inputFormatters: [
+          FilteringTextInputFormatter.allow(_regExp), // 数字
+        ],
         autofocus: true,
         keyboardType: TextInputType.number,
         onChanged: (String val) {
