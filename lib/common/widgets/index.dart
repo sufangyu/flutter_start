@@ -2,6 +2,7 @@ library widgets;
 
 export 'update/index.dart';
 export 'dialog/index.dart';
+export 'popup/index.dart';
 export 'protocol_model.widget.dart';
 export 'webview_base.widget.dart';
 export 'button.widget.dart';

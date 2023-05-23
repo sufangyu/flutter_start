@@ -9,7 +9,9 @@ import 'package:flutter_start/pages/debug/switch_env/index.dart';
 import 'package:flutter_start/pages/demo/bottom_sheet/index.dart';
 import 'package:flutter_start/pages/demo/code_input_filed/index.dart';
 import 'package:flutter_start/pages/demo/dialog/index.dart';
+import 'package:flutter_start/pages/demo/dropdown_menu/index.dart';
 import 'package:flutter_start/pages/demo/permission/index.dart';
+import 'package:flutter_start/pages/demo/popup/index.dart';
 import 'package:flutter_start/pages/demo/request/index.dart';
 import 'package:flutter_start/pages/demo/wechat/post/index.dart';
 import 'package:flutter_start/pages/demo/wechat/timeline/index.dart';
@@ -170,6 +172,18 @@ class AppPages {
       title: '弹窗',
       page: () => const DialogPage(),
       binding: DialogBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.DEMO_POPUP,
+      title: 'Popup 弹出层',
+      page: () => const PopupPage(),
+      binding: PopupBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.DEMO_DROPDOWN_MENU,
+      title: '下拉框',
+      page: () => const DropdownPage(),
+      binding: DropdownBinding(),
     ),
     GetPage(
       name: AppRoutes.DEMO_CODE_INPUT_FILED,

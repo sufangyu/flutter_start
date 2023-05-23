@@ -6,6 +6,7 @@ import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'account.style.dart';
 import 'controller.dart';
 
 class AccountPage extends GetView<AccountController> {
@@ -50,8 +51,6 @@ class AccountPage extends GetView<AccountController> {
             children: <Widget>[
               _buildHeader(),
               SizedBox(height: 10.h),
-              _buildCommonOperate(),
-              SizedBox(height: 10.h),
               Container(
                 color: Colors.white,
                 child: Column(
@@ -61,11 +60,17 @@ class AccountPage extends GetView<AccountController> {
                       title: Text("引导页", style: TextStyle(fontSize: 16.sp)),
                       leading: const Icon(Icons.add_alert_outlined),
                     ),
-                    const Divider(),
+                    const Divider(height: 1),
                     ListTile(
                       onTap: () => Get.toNamed(AppRoutes.MINE_SETTING),
                       title: Text("设置", style: TextStyle(fontSize: 16.sp)),
                       leading: const Icon(Icons.settings),
+                    ),
+                    const Divider(height: 1),
+                    ListTile(
+                      onTap: () => Get.toNamed(AppRoutes.MINE_SETTING),
+                      title: Text("意见反馈", style: TextStyle(fontSize: 16.sp)),
+                      leading: const Icon(Icons.opacity),
                     ),
                   ],
                 ),
@@ -73,10 +78,20 @@ class AccountPage extends GetView<AccountController> {
               divider10Px(),
               Container(
                 color: Colors.white,
-                child: ListTile(
-                  onTap: () => Get.toNamed(AppRoutes.MINE_ABOUT),
-                  title: Text("关于", style: TextStyle(fontSize: 16.sp)),
-                  leading: const Icon(Icons.question_answer_outlined),
+                child: Column(
+                  children: [
+                    ListTile(
+                      onTap: () => Get.toNamed(AppRoutes.MINE_ABOUT),
+                      title: Text("帮助与客服", style: TextStyle(fontSize: 16.sp)),
+                      leading: const Icon(Icons.help_outline),
+                    ),
+                    const Divider(height: 1),
+                    ListTile(
+                      onTap: () => Get.toNamed(AppRoutes.MINE_ABOUT),
+                      title: Text("关于", style: TextStyle(fontSize: 16.sp)),
+                      leading: const Icon(Icons.question_answer_outlined),
+                    ),
+                  ],
                 ),
               ),
               // 切换环境
@@ -112,94 +127,66 @@ class AccountPage extends GetView<AccountController> {
       color: Colors.white,
       // padding: EdgeInsets.all(20.w),
       child: Obx(
-        () => ListTile(
-          visualDensity: const VisualDensity(vertical: 4), // to expand
-          contentPadding: EdgeInsets.all(16.w),
-          // dense: true,
-          onTap: () {
-            if (UserStore.to().isLogin == false) {
-              Get.toNamed(AppRoutes.SIGN_IN);
-            }
-          },
-          leading: UserStore.to().isLogin
-              ? netImageCached(
-                  "https://avatars.githubusercontent.com/u/1852629?v=4",
-                  width: 48.w,
-                  height: 48.h,
-                )
-              : ClipRRect(
-                  borderRadius: Radii.k6pxRadius,
-                  child: Image.asset(
-                    "assets/images/default-image.png",
-                    width: 48.w,
-                    height: 48.w,
-                  ),
+        () => Column(
+          children: [
+            ListTile(
+              visualDensity: const VisualDensity(vertical: 4), // to expand
+              contentPadding: EdgeInsets.all(16.w),
+              // dense: true,
+              onTap: () {
+                if (UserStore.to().isLogin == false) {
+                  Get.toNamed(AppRoutes.SIGN_IN);
+                }
+              },
+              leading: UserStore.to().isLogin
+                  ? netImageCached(
+                      "https://avatars.githubusercontent.com/u/1852629?v=4",
+                      width: 48.w,
+                      height: 48.h,
+                    )
+                  : ClipRRect(
+                      borderRadius: Radii.k6pxRadius,
+                      child: Image.asset(
+                        "assets/images/default-image.png",
+                        width: 48.w,
+                        height: 48.w,
+                      ),
+                    ),
+
+              title: Text(
+                UserStore.to().profile.displayName ?? '立即登录',
+                style: TextStyle(fontSize: 18.sp),
+              ),
+              trailing: UserStore.to().isLogin
+                  ? null
+                  : const Icon(Icons.keyboard_arrow_right),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    Text("1500", style: textStyleHeaderCellTitle),
+                    Text("点赞", style: textStyleHeaderCellDesc),
+                  ],
                 ),
-
-          title: Text(
-            UserStore.to().profile.displayName ?? '立即登录',
-            style: TextStyle(fontSize: 18.sp),
-          ),
-          trailing: UserStore.to().isLogin
-              ? null
-              : const Icon(Icons.keyboard_arrow_right),
+                Column(
+                  children: [
+                    Text("224", style: textStyleHeaderCellTitle),
+                    Text("收藏", style: textStyleHeaderCellDesc),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text("0", style: textStyleHeaderCellTitle),
+                    Text("关注", style: textStyleHeaderCellDesc),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 16.h),
+          ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildCommonOperate() {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.only(bottom: 10.h),
-            // color: Colors.red,
-            child: Text(
-              "常用功能",
-              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
-            ),
-          ),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 1.0,
-            ),
-            itemCount: controller.list.length,
-            itemBuilder: (context, index) => _buildGridItemView(context, index),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Item
-  Widget _buildGridItemView(BuildContext context, int index) {
-    return Container(
-      alignment: Alignment.center,
-      // decoration: const BoxDecoration(color: Colors.red),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Icon(
-            controller.list[index]["icon"],
-            size: 32.w,
-            color: Colors.blue,
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            controller.list[index]["label"],
-            style: TextStyle(fontSize: 14.sp),
-          ),
-        ],
       ),
     );
   }

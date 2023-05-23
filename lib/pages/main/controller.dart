@@ -58,25 +58,31 @@ class MainController extends GetxController {
       path: AppRoutes.DEMO_DIALOG,
     ),
     Entry(
-      label: "Popover",
-      icon: Icons.inbox_outlined,
-      path: AppRoutes.DEMO_DIALOG,
-    ),
-    Entry(
       label: "Popup",
+      icon: Icons.inventory_2_outlined,
+      path: AppRoutes.DEMO_POPUP,
+    ),
+    Entry(
+      label: "Dropdown",
       icon: Icons.inbox_outlined,
-      path: AppRoutes.DEMO_DIALOG,
+      path: AppRoutes.DEMO_DROPDOWN_MENU,
     ),
-    Entry(
-      label: "水印",
-      icon: Icons.wallet,
-      path: AppRoutes.DEMO_DIALOG,
-    ),
-    Entry(
-      label: "结果页",
-      icon: Icons.wallet,
-      path: AppRoutes.DEMO_DIALOG,
-    ),
+    // Entry(
+    //   label: "Popover",
+    //   icon: Icons.inbox_outlined,
+    //   path: AppRoutes.DEMO_DIALOG,
+    // ),
+
+    // Entry(
+    //   label: "水印",
+    //   icon: Icons.wallet,
+    //   path: AppRoutes.DEMO_DIALOG,
+    // ),
+    // Entry(
+    //   label: "结果页",
+    //   icon: Icons.wallet,
+    //   path: AppRoutes.DEMO_DIALOG,
+    // ),
     Entry(
       label: "验证码",
       icon: Icons.spellcheck,
