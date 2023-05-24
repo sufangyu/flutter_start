@@ -1,10 +1,11 @@
+import 'package:dio_log/dio_log.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_start/common/values/index.dart';
 import 'package:flutter_start/pages/bookmarks/index.dart';
 import 'package:flutter_start/pages/category/index.dart';
 import 'package:flutter_start/pages/main/index.dart';
 import 'package:flutter_start/pages/mine/account/index.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'controller.dart';
@@ -46,6 +47,11 @@ class ApplicationPage extends GetView<ApplicationController> {
 
   @override
   Widget build(BuildContext context) {
+    // dio_log debug button
+    if (kDebugMode) {
+      showDebugBtn(context);
+    }
+
     return Scaffold(
       // appBar: _buildAppBar(),
       body: _buildPageView(),
