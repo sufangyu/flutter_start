@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_start/common/widgets/index.dart';
+import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 
 class PopupController extends GetxController {
@@ -69,7 +70,18 @@ class PopupController extends GetxController {
       Get.context!,
       position: PopupPosition.bottom,
       child: _buildPopupContent(),
+    );
+  }
+
+  void openWithRound() {
+    PopupWindow.open(
+      Get.context!,
+      position: PopupPosition.bottom,
+      child: _buildPopupContent(),
       round: true,
+      onClosed: () {
+        LoggerUtil.debug("关闭回调方法");
+      },
     );
   }
 }

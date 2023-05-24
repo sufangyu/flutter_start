@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'index.dart';
-
-// https://juejin.cn/post/7185921201204625463
-// TODO: https://blog.csdn.net/a526001650a/article/details/127654284?ydreferer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8%3D
+import 'popup.config.dart';
 
 class PopupWidget extends StatefulWidget {
   const PopupWidget({
     Key? key,
-    required this.onClose,
+    required this.onCloseOverlay,
     required this.child,
     this.position,
     this.width,
@@ -16,9 +14,10 @@ class PopupWidget extends StatefulWidget {
     this.closeOnMaskClick = true,
     this.round = false,
     this.closeable = false,
+    this.onClosed,
   }) : super(key: key);
 
-  final Function() onClose;
+  final Function() onCloseOverlay;
   final Widget child;
 
   /// 弹窗位置
@@ -37,6 +36,9 @@ class PopupWidget extends StatefulWidget {
   /// 是否显示关闭按钮. 默认 false
   final bool? closeable;
 
+  /// 关闭弹窗回调函数
+  final Function? onClosed;
+
   @override
   State<PopupWidget> createState() => _PopupWidgetState();
 }
@@ -51,111 +53,91 @@ class _PopupWidgetState extends State<PopupWidget>
   late double? _height;
 
   /// 圆角
-  late BorderRadiusGeometry? _borderRadius =
-      const BorderRadius.all(Radius.zero);
-
-  /// 安全区域的是否设置上下安全间距
-  late bool _safeAreaTop = true;
-  late bool _safeAreaBottom = true;
+  late BorderRadiusGeometry? _borderRadius = borderRadiusZero;
 
   // 遮罩层动画
-  static const _fadeInDuration = Duration(milliseconds: 250);
-  static const _fadeOutDuration = Duration(milliseconds: 300);
   late final AnimationController _opacityController = AnimationController(
     vsync: this,
-    duration: _fadeInDuration,
-    reverseDuration: _fadeOutDuration,
+    duration: inDuration,
+    reverseDuration: outDuration,
   );
 
-  // 主内容动画
-  late final AnimationController _slideController = AnimationController(
-    duration: const Duration(milliseconds: 300),
+  late final AnimationController _animController = AnimationController(
+    duration: inDuration,
+    reverseDuration: outDuration,
     vsync: this,
   );
-  late final Animation<Offset> _animation;
-  late Tween<Offset> _tween;
-  late Alignment _alignment;
-  late Offset _begin;
-  late Offset _end;
+  late final CurvedAnimation _curveAnimation = CurvedAnimation(
+    parent: _animController,
+    curve: Curves.easeInOut,
+  );
+  late Animation<double> _contentAnimation; // 用于保存动画的过渡值和状态
 
   @override
   void initState() {
     super.initState();
-    _position = widget.position ?? PopupPosition.bottom;
 
     _initContentState();
-
-    _slideController.forward();
+    _animController.forward();
     _opacityController.forward();
   }
 
   /// 初始化内容状态（动画、圆角）
   void _initContentState() {
+    _position = widget.position ?? PopupPosition.bottom;
+
     switch (_position!) {
       case PopupPosition.top:
-        _alignment = Alignment.topLeft;
-        _begin = const Offset(0.0, -1.0);
-        _end = const Offset(0.0, 0.0);
-        _width = double.infinity;
-        _height = widget.height ?? 460;
-        _safeAreaBottom = false;
+        _height = widget.height ?? defaultHeight;
+        _contentAnimation =
+            Tween(begin: -_height!, end: 0.0).animate(_curveAnimation);
 
         if (widget.round == true) {
-          _borderRadius = const BorderRadius.only(
-            bottomLeft: Radius.circular(16.0),
-            bottomRight: Radius.circular(16.0),
-          );
+          _borderRadius = borderRadiusBottom;
         }
         break;
       case PopupPosition.bottom:
-        _alignment = Alignment.bottomLeft;
-        _begin = const Offset(0.0, 1.0);
-        _end = const Offset(0.0, 0.0);
-        _width = double.infinity;
-        _height = widget.height ?? 460;
-        _safeAreaTop = false;
+        _height = widget.height ?? defaultHeight;
+        _contentAnimation =
+            Tween(begin: -_height!, end: 0.0).animate(_curveAnimation);
 
         if (widget.round == true) {
-          _borderRadius = const BorderRadius.only(
-            topRight: Radius.circular(16.0),
-            topLeft: Radius.circular(16.0),
-          );
+          _borderRadius = borderRadiusTop;
         }
         break;
       case PopupPosition.right:
-        _alignment = Alignment.topRight;
-        _begin = const Offset(1.0, 0.0);
-        _end = const Offset(0.0, 0.0);
-        _width = widget.width ?? 320;
-        _height = double.infinity;
+        _width = widget.width ?? defaultWidth;
+        _contentAnimation =
+            Tween(begin: -_width!, end: 0.0).animate(_curveAnimation);
         break;
       case PopupPosition.left:
-        _alignment = Alignment.topLeft;
-        _begin = const Offset(-1.0, 0.0);
-        _end = const Offset(0.0, 0.0);
-        _width = widget.width ?? 320;
-        _height = double.infinity;
+        _width = widget.width ?? defaultWidth;
+        _contentAnimation =
+            Tween(begin: -_width!, end: 0.0).animate(_curveAnimation);
         break;
     }
-
-    _tween = Tween(begin: _begin, end: _end);
-    _animation = _tween.animate(
-      CurvedAnimation(parent: _slideController, curve: Curves.easeInOut),
-    );
   }
 
   @override
   void dispose() {
     super.dispose();
+    _animController.dispose();
     _opacityController.dispose();
-    _slideController.dispose();
   }
 
   /// 关闭弹窗
   Future<void> onClose() async {
-    await _slideController.reverse();
+    if (_animController.status != AnimationStatus.completed ||
+        _opacityController.status != AnimationStatus.completed) {
+      return;
+    }
+    await _animController.reverse();
     await _opacityController.reverse();
-    widget.onClose();
+    widget.onCloseOverlay();
+
+    if (widget.onClosed != null) {
+      widget.onClosed!();
+    }
   }
 
   /// 关闭按钮
@@ -178,6 +160,7 @@ class _PopupWidgetState extends State<PopupWidget>
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // 遮罩层
         GestureDetector(
           onTap: () async {
             if (widget.closeOnMaskClick != true) {
@@ -194,32 +177,76 @@ class _PopupWidgetState extends State<PopupWidget>
             ),
           ),
         ),
-        SlideTransition(
-          position: _animation,
-          child: Container(
-            alignment: _alignment,
-            child: Container(
-              height: _height,
-              width: _width,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: _borderRadius,
-              ),
-              child: SafeArea(
-                top: _safeAreaTop,
-                bottom: _safeAreaBottom,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    _buildCloseButton(),
-                    widget.child,
-                  ],
-                ),
-              ),
-            ),
-          ),
+        AnimatedBuilder(
+          animation: _animController,
+          builder: (BuildContext ctx, child) {
+            return _buildContentWrapper(); // 通过animation.value值的改变产生动画效果
+          },
         ),
       ],
+    );
+  }
+
+  /// 主体内容容器（负责动画）
+  Widget _buildContentWrapper() {
+    final size = MediaQuery.of(context).size;
+    switch (_position!) {
+      case PopupPosition.top:
+        return Positioned(
+          top: _contentAnimation.value,
+          child: _buildContent(
+            width: size.width,
+            height: _height!,
+            safeAreaBottom: false,
+          ),
+        );
+      case PopupPosition.bottom:
+        return Positioned(
+          bottom: _contentAnimation.value,
+          child: _buildContent(
+            width: size.width,
+            height: _height!,
+            safeAreaTop: false,
+          ),
+        );
+      case PopupPosition.right:
+        return Positioned(
+          right: _contentAnimation.value,
+          child: _buildContent(width: _width!, height: size.height),
+        );
+      case PopupPosition.left:
+        return Positioned(
+          left: _contentAnimation.value,
+          child: _buildContent(width: _width!, height: size.height),
+        );
+    }
+  }
+
+  Container _buildContent({
+    required double width,
+    required double height,
+    bool? safeAreaTop = true,
+    bool? safeAreaBottom = true,
+  }) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: _borderRadius,
+      ),
+      // child: widget.child,
+      child: SafeArea(
+        top: safeAreaTop!,
+        bottom: safeAreaBottom!,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            _buildCloseButton(),
+            widget.child,
+          ],
+        ),
+      ),
     );
   }
 }
