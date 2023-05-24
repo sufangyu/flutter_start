@@ -44,6 +44,28 @@ class PopupPage extends GetView<PopupController> {
               onPressed: controller.openWithRound,
               child: const Text("圆角+关闭回调"),
             ),
+            ElevatedButton(
+              onPressed: controller.openWithCloseTopRight,
+              child: const Text("右上角关闭按钮"),
+            ),
+            ElevatedButton(
+              onPressed: controller.openWithCloseTopLeft,
+              child: const Text("左上角关闭按钮"),
+            ),
+            ElevatedButton(
+              onPressed: controller.openWithCloseBottomRight,
+              child: const Text("右下角关闭按钮"),
+            ),
+            ElevatedButton(
+              onPressed: controller.openWithCloseBottomLeft,
+              child: const Text("左下角关闭按钮"),
+            ),
+            ElevatedButton(
+              onPressed: controller.openWithCloseMaxHeight,
+              child: const Text("多内容滚动"),
+            ),
+            Container(height: 800, color: Colors.grey.withOpacity(0.2)),
+            Container(height: 20, color: Colors.blue.withOpacity(0.8)),
           ],
         ),
       ),

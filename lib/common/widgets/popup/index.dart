@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'popup.widget.dart';
 
-/// 出现位置
+/// 弹窗出现位置. 默认 bottom
 enum PopupPosition {
   top,
   bottom,
@@ -10,15 +10,26 @@ enum PopupPosition {
   left,
 }
 
+/// 弹窗关闭按钮位置. 默认 topRight
+enum PopupClosePosition {
+  topLeft,
+  topRight,
+  bottomLeft,
+  bottomRight,
+}
+
 class PopupWindow {
   static OverlayEntry? overlayEntry;
+
+  // static GlobalKey popupKey = GlobalKey();
 
   /// 打开 popup 弹窗层
   /// [position]
   /// [width、height] 弹窗尺寸（宽、高）
   /// [round] 是否显示圆角. 默认 false
-  /// [closeOnMaskClick] 是否点击背景蒙层后关闭. 默认 true
+  /// [title] 弹窗标题
   /// [closeable] 是否显示关闭按钮. 默认 false
+  /// [closeOnMaskClick] 是否点击背景蒙层后关闭. 默认 true
   /// [onClosed] 关闭弹窗回调函数
   static open(
     BuildContext context, {
@@ -27,20 +38,25 @@ class PopupWindow {
     double? width,
     double? height,
     bool? round = false,
-    bool? closeOnMaskClick = true,
+    Widget? title,
     bool? closeable = false,
+    PopupClosePosition? closePosition,
+    bool? closeOnMaskClick = true,
     Function()? onClosed,
   }) {
     overlayEntry = OverlayEntry(
       builder: (context) => PopupWidget(
-        onCloseOverlay: close,
-        onClosed: onClosed,
+        key: popupKey,
         position: position,
-        round: round,
-        closeOnMaskClick: closeOnMaskClick,
-        closeable: closeable,
         width: width,
         height: height,
+        round: round,
+        title: title,
+        closeable: closeable,
+        closePosition: closePosition,
+        closeOnMaskClick: closeOnMaskClick,
+        onClosed: onClosed,
+        onCloseOverlay: close,
         child: child,
       ),
     );
@@ -49,7 +65,9 @@ class PopupWindow {
   }
 
   /// 关闭
-  static close() {
+  static close() async {
+    await popupKey.currentState?.onClose();
     overlayEntry?.remove();
+    overlayEntry = null;
   }
 }

@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'index.dart';
 import 'popup.config.dart';
 
+/// 很重要，父组件通过这个 globalKey 调用组件的方法
+GlobalKey<PopupWidgetState> popupKey = GlobalKey();
+
 class PopupWidget extends StatefulWidget {
   const PopupWidget({
     Key? key,
@@ -11,9 +14,11 @@ class PopupWidget extends StatefulWidget {
     this.position,
     this.width,
     this.height,
-    this.closeOnMaskClick = true,
     this.round = false,
+    this.title,
     this.closeable = false,
+    this.closePosition,
+    this.closeOnMaskClick = true,
     this.onClosed,
   }) : super(key: key);
 
@@ -27,26 +32,34 @@ class PopupWidget extends StatefulWidget {
   final double? width;
   final double? height;
 
-  /// 是否点击背景蒙层后关闭. 默认 true
-  final bool? closeOnMaskClick;
-
   /// 是否显示圆角. 默认 false
   final bool? round;
 
+  /// 标题
+  final Widget? title;
+
   /// 是否显示关闭按钮. 默认 false
   final bool? closeable;
+
+  /// 关闭弹窗位置
+  final PopupClosePosition? closePosition;
+
+  /// 是否点击背景蒙层后关闭. 默认 true
+  final bool? closeOnMaskClick;
 
   /// 关闭弹窗回调函数
   final Function? onClosed;
 
   @override
-  State<PopupWidget> createState() => _PopupWidgetState();
+  State<PopupWidget> createState() => PopupWidgetState();
 }
 
-class _PopupWidgetState extends State<PopupWidget>
+class PopupWidgetState extends State<PopupWidget>
     with TickerProviderStateMixin {
   /// 出现位置
   late PopupPosition? _position;
+
+  late PopupClosePosition? _closePosition;
 
   /// 弹窗尺寸（宽、高）
   late double? _width;
@@ -85,6 +98,7 @@ class _PopupWidgetState extends State<PopupWidget>
   /// 初始化内容状态（动画、圆角）
   void _initContentState() {
     _position = widget.position ?? PopupPosition.bottom;
+    _closePosition = widget.closePosition ?? PopupClosePosition.topRight;
 
     switch (_position!) {
       case PopupPosition.top:
@@ -140,20 +154,50 @@ class _PopupWidgetState extends State<PopupWidget>
     }
   }
 
-  /// 关闭按钮
-  Widget _buildCloseButton() {
-    return widget.closeable == true
-        ? GestureDetector(
-            onTap: onClose,
+  /// 头部信息
+  Widget _buildHeader() {
+    if (widget.closeable == true || widget.title != null) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        textDirection: (_closePosition == PopupClosePosition.topLeft ||
+                _closePosition == PopupClosePosition.bottomLeft)
+            ? TextDirection.rtl
+            : null,
+        children: [
+          if (widget.closeable == true) _buildHeaderSides(),
+          Expanded(
             child: Container(
               height: 42,
-              width: 42,
-              margin: const EdgeInsets.only(right: 8, top: 8),
               alignment: Alignment.center,
-              child: const Icon(Icons.close_rounded),
+              child: widget.title ?? const SizedBox.shrink(),
             ),
-          )
-        : const SizedBox.shrink();
+          ),
+          if (widget.closeable == true) _buildHeaderCloseButton(),
+        ],
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
+  }
+
+  /// 头部关闭按钮
+  Widget _buildHeaderCloseButton() {
+    return GestureDetector(
+      onTap: onClose,
+      child: _buildHeaderSides(
+        child: const Icon(Icons.close_rounded),
+      ),
+    );
+  }
+
+  /// 头部左右内容快
+  Container _buildHeaderSides({Widget? child}) {
+    return Container(
+      margin: const EdgeInsets.only(left: 8, right: 8),
+      height: 42,
+      width: 42,
+      child: child,
+    );
   }
 
   @override
@@ -222,6 +266,7 @@ class _PopupWidgetState extends State<PopupWidget>
     }
   }
 
+  /// 主体内容
   Container _buildContent({
     required double width,
     required double height,
@@ -240,10 +285,14 @@ class _PopupWidgetState extends State<PopupWidget>
         top: safeAreaTop!,
         bottom: safeAreaBottom!,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          // crossAxisAlignment: CrossAxisAlignment.end,
+          verticalDirection: (_closePosition == PopupClosePosition.bottomLeft ||
+                  _closePosition == PopupClosePosition.bottomRight)
+              ? VerticalDirection.up
+              : VerticalDirection.down,
           children: [
-            _buildCloseButton(),
-            widget.child,
+            _buildHeader(),
+            Expanded(child: widget.child),
           ],
         ),
       ),
