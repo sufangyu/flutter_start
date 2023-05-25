@@ -30,4 +30,6 @@ class AppRoutes {
   static const DEMO_WECHAT_TIMELINE = '/demo/wechat_timeline';
   static const DEMO_WECHAT_ASSETS_PICKER = '/demo/wechat_assets_picker';
   static const DEMO_CODE_INPUT_FILED = '/demo/code_input_filed';
+  static const DEMO_SKELETON = '/demo/skeleton';
+  static const DEMO_SKELETON_LIST_VIEW = '/demo/skeleton/list-view';
 }

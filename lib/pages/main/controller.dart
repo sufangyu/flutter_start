@@ -88,6 +88,11 @@ class MainController extends GetxController {
       icon: Icons.spellcheck,
       path: AppRoutes.DEMO_CODE_INPUT_FILED,
     ),
+    Entry(
+      label: "骨架屏",
+      icon: Icons.ballot_outlined,
+      path: AppRoutes.DEMO_SKELETON,
+    ),
   ];
 
   /// 生命周期 ========================================
