@@ -13,6 +13,8 @@ import 'package:flutter_start/pages/demo/dropdown_menu/index.dart';
 import 'package:flutter_start/pages/demo/permission/index.dart';
 import 'package:flutter_start/pages/demo/popup/index.dart';
 import 'package:flutter_start/pages/demo/request/index.dart';
+import 'package:flutter_start/pages/demo/skeleton/index.dart';
+import 'package:flutter_start/pages/demo/skeleton/view_list.dart';
 import 'package:flutter_start/pages/demo/wechat/post/index.dart';
 import 'package:flutter_start/pages/demo/wechat/timeline/index.dart';
 import 'package:flutter_start/pages/detail/index.dart';
@@ -190,6 +192,18 @@ class AppPages {
       title: '验证码输入框',
       page: () => const CodeInputPage(),
       binding: CodeInputBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.DEMO_SKELETON,
+      title: '骨架屏',
+      page: () => const SkeletonPage(),
+      binding: SkeletonBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.DEMO_SKELETON_LIST_VIEW,
+      title: '骨架屏-listVIew',
+      page: () => const SkeletonListViewPage(),
+      binding: SkeletonBinding(),
     ),
   ];
 }
