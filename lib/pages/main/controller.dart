@@ -31,7 +31,7 @@ class MainController extends GetxController {
     Entry(
       label: "地图、定位",
       icon: Icons.location_on_outlined,
-      path: AppRoutes.MINE_SETTING,
+      path: AppRoutes.DEMO_AMAP_ENTRY,
     ),
     Entry(
       label: "相机应用",

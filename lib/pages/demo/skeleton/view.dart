@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_start/common/routers/index.dart';
-import 'package:flutter_start/common/widgets/index.dart';
-import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:skeletons/skeletons.dart';
 

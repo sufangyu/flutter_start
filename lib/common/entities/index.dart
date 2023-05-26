@@ -8,3 +8,4 @@ export 'channel.entity.dart';
 export 'app.entity.dart';
 export 'request.entity.dart';
 export 'wechat.entity.dart';
+export 'amap.entity.dart';

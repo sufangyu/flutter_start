@@ -1,4 +1,7 @@
 import 'package:flutter_start/common/routers/index.dart';
+import 'package:flutter_start/pages/demo/amap/index.dart';
+import 'package:flutter_start/pages/demo/amap/view_location.dart';
+import 'package:flutter_start/pages/demo/amap/view_map.dart';
 import 'package:flutter_start/pages/demo/bottom_sheet/index.dart';
 import 'package:flutter_start/pages/demo/code_input_filed/index.dart';
 import 'package:flutter_start/pages/demo/dialog/index.dart';
@@ -77,5 +80,23 @@ List<GetPage> demoRoutes = [
     title: '骨架屏-listVIew',
     page: () => const SkeletonListViewPage(),
     binding: SkeletonBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_AMAP_ENTRY,
+    title: '高德地图入口',
+    page: () => const AMapViewPage(),
+    binding: AMapBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_AMAP_LOCATION,
+    title: '高德地图-定位示例',
+    page: () => const AMapLocationViewPage(),
+    binding: AMapBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_AMAP_MAP,
+    title: '高德地图-地图示例',
+    page: () => const AMapMapViewPage(),
+    binding: AMapBinding(),
   ),
 ];

@@ -53,8 +53,30 @@ android {
         versionName flutterVersionName
     }
 
+    signingConfigs {
+        // 发布版本的签名配置
+        release {
+            storeFile file('../amap.jks') // KeyStore 路径
+            keyAlias "amap" // 别名
+            storePassword "123456" // 密码
+            keyPassword "123456" // 密码
+        }
+        // 调试版本的签名配置
+        debug {
+            storeFile file('../amap.jks') // KeyStore 路径
+            keyAlias "amap" // 别名
+            storePassword "123456" // 密码
+            keyPassword "123456" // 密码
+        }
+    }
+
     buildTypes {
         release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+        }
+        debug {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
@@ -67,5 +89,8 @@ flutter {
 }
 
 dependencies {
+    implementation 'com.amap.api:location:5.6.0'
+    implementation 'com.amap.api:3dmap:8.1.0'
+    implementation 'com.amap.api:search:5.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

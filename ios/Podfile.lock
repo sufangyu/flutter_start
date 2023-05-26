@@ -1,4 +1,15 @@
 PODS:
+  - AMap3DMap (9.6.2):
+    - AMapFoundation (>= 1.8.0)
+  - amap_flutter_location (0.0.1):
+    - AMapLocation
+    - Flutter
+  - amap_flutter_map (0.0.1):
+    - AMap3DMap
+    - Flutter
+  - AMapFoundation (1.8.2)
+  - AMapLocation (2.10.0):
+    - AMapFoundation (>= 1.8.0)
   - better_open_file (0.0.1):
     - Flutter
   - Bugly (2.5.93)
@@ -111,6 +122,8 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - amap_flutter_location (from `.symlinks/plugins/amap_flutter_location/ios`)
+  - amap_flutter_map (from `.symlinks/plugins/amap_flutter_map/ios`)
   - better_open_file (from `.symlinks/plugins/better_open_file/ios`)
   - camerawesome (from `.symlinks/plugins/camerawesome/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
@@ -136,6 +149,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AMap3DMap
+    - AMapFoundation
+    - AMapLocation
     - Bugly
     - DKImagePickerController
     - DKPhotoGallery
@@ -149,6 +165,10 @@ SPEC REPOS:
     - Toast
 
 EXTERNAL SOURCES:
+  amap_flutter_location:
+    :path: ".symlinks/plugins/amap_flutter_location/ios"
+  amap_flutter_map:
+    :path: ".symlinks/plugins/amap_flutter_map/ios"
   better_open_file:
     :path: ".symlinks/plugins/better_open_file/ios"
   camerawesome:
@@ -195,6 +215,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
+  AMap3DMap: 1d24615b754c2ac5a92258b59729e60a6d478205
+  amap_flutter_location: 44ff5beb64f42e0bf5feb402fe299dac0013af6f
+  amap_flutter_map: 979e54d227cedac6c7504a2151bfbf3bcf96760a
+  AMapFoundation: 9885c48fc3a78fdfb84a0299a2293e56ea3c9fec
+  AMapLocation: 5248aec2455ebb5d104b367813c946430a2ee033
   better_open_file: 03cf320415d4d3f46b6e00adc4a567d76c1a399d
   Bugly: b8715e6ec4004b7f7fbffab0643ba80545aee3da
   camerawesome: 1e06540f60158809bc70f398ed1ac2cf93fe4188

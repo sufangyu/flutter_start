@@ -6,3 +6,4 @@ export 'user.api.dart';
 export 'news.api.dart';
 export 'request.api.dart';
 export 'wechat.api.dart';
+export 'amap.api.dart';

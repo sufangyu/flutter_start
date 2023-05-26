@@ -99,8 +99,14 @@ dependencies:
   # 分享
   share_plus: ^6.3.2
 
+  # 高德地图
+  amap_flutter_location: ^3.0.0
+  amap_flutter_map: ^3.0.0
+  amap_flutter_base: ^3.0.0
+
   # 动画
   animate_do: ^3.0.2
+  flutter_speed_dial: ^6.2.0
   # 骨架屏
   skeletons: ^0.0.3
 

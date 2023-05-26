@@ -32,4 +32,7 @@ class AppRoutes {
   static const DEMO_CODE_INPUT_FILED = '/demo/code_input_filed';
   static const DEMO_SKELETON = '/demo/skeleton';
   static const DEMO_SKELETON_LIST_VIEW = '/demo/skeleton/list-view';
+  static const DEMO_AMAP_ENTRY = '/demo/amap/entry';
+  static const DEMO_AMAP_LOCATION = '/demo/amap/location';
+  static const DEMO_AMAP_MAP = '/demo/amap/map';
 }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_start/common/widgets/index.dart';
-import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:skeletons/skeletons.dart';
 
@@ -73,17 +71,6 @@ class SkeletonListViewPage extends GetView<SkeletonController> {
             )
           ],
         ),
-      ),
-    );
-  }
-
-  /// 示例标题
-  Widget _buildDemoHeader(String title) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8.sp),
-      child: Text(
-        title,
-        style: TextStyle(color: Colors.black54, fontSize: 16.sp),
       ),
     );
   }
