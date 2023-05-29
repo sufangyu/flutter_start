@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
   - AMap3DMap (9.6.2):
     - AMapFoundation (>= 1.8.0)
   - amap_flutter_location (0.0.1):
@@ -69,6 +84,11 @@ PODS:
   - FMDB/standard (2.7.5)
   - image_picker_ios (0.0.1):
     - Flutter
+  - image_pickers (0.0.1):
+    - AFNetworking
+    - Flutter
+    - SDWebImage
+    - ZLPhotoBrowser (~> 4.3.9)
   - JPSVolumeButtonHandler (1.0.5)
   - libwebp (1.2.4):
     - libwebp/demux (= 1.2.4)
@@ -120,6 +140,9 @@ PODS:
     - Flutter
   - webview_flutter_wkwebview (0.0.1):
     - Flutter
+  - ZLPhotoBrowser (4.3.9):
+    - ZLPhotoBrowser/Core (= 4.3.9)
+  - ZLPhotoBrowser/Core (4.3.9)
 
 DEPENDENCIES:
   - amap_flutter_location (from `.symlinks/plugins/amap_flutter_location/ios`)
@@ -133,6 +156,7 @@ DEPENDENCIES:
   - flutter_image_compress_common (from `.symlinks/plugins/flutter_image_compress_common/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - image_pickers (from `.symlinks/plugins/image_pickers/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
@@ -149,6 +173,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AFNetworking
     - AMap3DMap
     - AMapFoundation
     - AMapLocation
@@ -163,6 +188,7 @@ SPEC REPOS:
     - SDWebImageWebPCoder
     - SwiftyGif
     - Toast
+    - ZLPhotoBrowser
 
 EXTERNAL SOURCES:
   amap_flutter_location:
@@ -187,6 +213,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/fluttertoast/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
+  image_pickers:
+    :path: ".symlinks/plugins/image_pickers/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
@@ -215,6 +243,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   AMap3DMap: 1d24615b754c2ac5a92258b59729e60a6d478205
   amap_flutter_location: 44ff5beb64f42e0bf5feb402fe299dac0013af6f
   amap_flutter_map: 979e54d227cedac6c7504a2151bfbf3bcf96760a
@@ -233,6 +262,7 @@ SPEC CHECKSUMS:
   fluttertoast: eb263d302cc92e04176c053d2385237e9f43fad0
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
+  image_pickers: 4406949954a5eb4fac5ada5f13810e6419ef4467
   JPSVolumeButtonHandler: 53110330c9168ed325def93eabff39f0fe3e8082
   libwebp: f62cb61d0a484ba548448a4bd52aabf150ff6eef
   Mantle: c5aa8794a29a022dfbbfc9799af95f477a69b62d
@@ -253,6 +283,7 @@ SPEC CHECKSUMS:
   video_player_avfoundation: 81e49bb3d9fb63dccf9fa0f6d877dc3ddbeac126
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
   webview_flutter_wkwebview: 2e2d318f21a5e036e2c3f26171342e95908bd60a
+  ZLPhotoBrowser: 02b3569b8f702d2e153e8fdb1f6b32fef3a2867c
 
 PODFILE CHECKSUM: 28f8a06ff553953255893e3cf76e4dd9ae197c29
 

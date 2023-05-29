@@ -23,7 +23,7 @@ import 'observers.dart';
 class AppPages {
   /// 初始化页面
   // static const INITIAL = AppRoutes.GUIDE_SCREEN;
-  static const INITIAL = AppRoutes.DEMO_AMAP_ENTRY;
+  static const INITIAL = AppRoutes.DEMO_SHARES;
 
   /// 全局路由监听器
   static final RouteObserver<Route> observer = RouteObservers();

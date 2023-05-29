@@ -9,6 +9,7 @@ import 'package:flutter_start/pages/demo/dropdown_menu/index.dart';
 import 'package:flutter_start/pages/demo/permission/index.dart';
 import 'package:flutter_start/pages/demo/popup/index.dart';
 import 'package:flutter_start/pages/demo/request/index.dart';
+import 'package:flutter_start/pages/demo/shares/index.dart';
 import 'package:flutter_start/pages/demo/skeleton/index.dart';
 import 'package:flutter_start/pages/demo/wechat/post/index.dart';
 import 'package:flutter_start/pages/demo/wechat/timeline/index.dart';
@@ -98,5 +99,11 @@ List<GetPage> demoRoutes = [
     title: '高德地图-地图示例',
     page: () => const AMapMapViewPage(),
     binding: AMapBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_SHARES,
+    title: '分享示例',
+    page: () => const ShareDemoPage(),
+    binding: ShareDemoBinding(),
   ),
 ];

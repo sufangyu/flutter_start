@@ -71,6 +71,10 @@ dependencies:
   image_picker: ^0.8.7+4
   wechat_assets_picker: ^8.5.0
   extended_image: ^8.0.1
+  # 图片保存
+  image_pickers: ^2.0.4+1
+  # 生成二维码图片
+  qr_flutter: ^4.1.0
 
   # 图片压缩
   flutter_image_compress: ^2.0.3
