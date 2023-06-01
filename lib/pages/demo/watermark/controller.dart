@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
