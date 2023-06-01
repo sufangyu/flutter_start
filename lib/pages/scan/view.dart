@@ -17,6 +17,7 @@ class ScanPage extends GetView<ScanPageController> {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       backgroundColor: const Color(0xFF000000),
+      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
           // 扫描区域
@@ -29,16 +30,16 @@ class ScanPage extends GetView<ScanPageController> {
             },
           ),
           Positioned(
-            left: 60.w,
-            top: 120.h,
+            left: 45.w,
+            top: 200.h,
             child: const Text(
-              "请将二维码对准至框内，即可自动扫描",
+              "请将二维码/条形码置于框内，即可自动识别",
               style: TextStyle(color: Colors.white),
             ),
           ),
           // 手电筒模式
           Positioned(
-            left: 100.w,
+            left: 80.w,
             bottom: 40.h,
             child: StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
@@ -47,7 +48,7 @@ class ScanPage extends GetView<ScanPageController> {
                     onPressed: controller.toggleTorchMode,
                     child: Icon(
                       controller.isFlashOn ? Icons.flash_on : Icons.flash_off,
-                      size: 40.sp,
+                      size: 32.sp,
                       color: const Color(0xFF4759DA),
                     ),
                   ),
@@ -56,13 +57,13 @@ class ScanPage extends GetView<ScanPageController> {
             ),
           ),
           Positioned(
-            right: 100.w,
+            right: 80.w,
             bottom: 40.h,
             child: MaterialButton(
               onPressed: controller.scanPhoto,
               child: Icon(
                 Icons.image_outlined,
-                size: 40.sp,
+                size: 32.sp,
                 color: const Color(0xFF4759DA),
               ),
             ),
