@@ -31,7 +31,7 @@ class WaterMarkInstance {
         text: watermark,
         textStyle: textStyle ??
             TextStyle(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withOpacity(0.03),
               fontSize: 18,
             ),
       ),

@@ -78,6 +78,11 @@ class MainController extends GetxController {
       icon: Icons.water,
       path: AppRoutes.DEMO_WATERMARK,
     ),
+    Entry(
+      label: "图片生成",
+      icon: Icons.image_search_sharp,
+      path: AppRoutes.DEMO_SHARES,
+    ),
     // Entry(
     //   label: "结果页",
     //   icon: Icons.wallet,
