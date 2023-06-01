@@ -73,11 +73,11 @@ class MainController extends GetxController {
     //   path: AppRoutes.DEMO_DIALOG,
     // ),
 
-    // Entry(
-    //   label: "水印",
-    //   icon: Icons.wallet,
-    //   path: AppRoutes.DEMO_DIALOG,
-    // ),
+    Entry(
+      label: "水印",
+      icon: Icons.water,
+      path: AppRoutes.DEMO_WATERMARK,
+    ),
     // Entry(
     //   label: "结果页",
     //   icon: Icons.wallet,

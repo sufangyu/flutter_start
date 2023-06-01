@@ -11,6 +11,7 @@ import 'package:flutter_start/pages/demo/popup/index.dart';
 import 'package:flutter_start/pages/demo/request/index.dart';
 import 'package:flutter_start/pages/demo/shares/index.dart';
 import 'package:flutter_start/pages/demo/skeleton/index.dart';
+import 'package:flutter_start/pages/demo/watermark/index.dart';
 import 'package:flutter_start/pages/demo/wechat/post/index.dart';
 import 'package:flutter_start/pages/demo/wechat/timeline/index.dart';
 import 'package:get/get.dart';
@@ -105,5 +106,11 @@ List<GetPage> demoRoutes = [
     title: '分享示例',
     page: () => const ShareDemoPage(),
     binding: ShareDemoBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_WATERMARK,
+    title: '水印示例',
+    page: () => const WatermarkPage(),
+    binding: WatermarkBinding(),
   ),
 ];
