@@ -46,11 +46,12 @@ class PermissionPage extends GetView<PermissionController> {
             title: const Text("获取存储权限"),
             onTap: () async {
               PermissionStatus status =
-                  await PermissionUtil.getSinglePermission(Permission.storage);
+                  await PermissionUtil.getSinglePermission(
+                      Permission.manageExternalStorage);
               LoggerUtil.info("Permission.storage status::$status");
 
               PermissionUtil.checkPermission(
-                permissions: [Permission.storage],
+                permissions: [Permission.manageExternalStorage],
                 onFailed: () => toastInfo(msg: "权限获取失败"),
                 onSuccess: () => toastInfo(msg: "权限获取成功"),
               );
@@ -100,7 +101,7 @@ class PermissionPage extends GetView<PermissionController> {
                 permissions: [
                   Permission.microphone,
                   Permission.camera,
-                  Permission.storage,
+                  Permission.manageExternalStorage,
                 ],
                 onFailed: () => toastInfo(msg: "权限获取失败"),
                 onSuccess: () => toastInfo(msg: "权限获取成功"),
@@ -108,6 +109,13 @@ class PermissionPage extends GetView<PermissionController> {
             },
           ),
           const Divider(),
+          ListTile(
+            leading: const CircleAvatar(child: Icon(Icons.settings)),
+            title: const Text("打开权限设置"),
+            onTap: () async {
+              PermissionUtil.openSettings();
+            },
+          ),
         ],
       ),
     );

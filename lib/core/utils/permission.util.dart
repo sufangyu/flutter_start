@@ -124,4 +124,9 @@ class PermissionUtil {
     });
     return currentPermissionStatus;
   }
+
+  /// 打开设置
+  static Future<void> openSettings() async {
+    await openAppSettings();
+  }
 }

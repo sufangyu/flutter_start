@@ -293,16 +293,30 @@ class _AppUpdateDialogState extends State<AppUpdateDialog> {
       ),
     );
 
+    // 404: https://lf9-apk.ugapk.cn/package/apk/jj_app/2632_64401/jj_app_download_app_normal_v2632_64401_277e_1679897332.apk?v=1679897334
+    // 200:
     var uri =
-        "https://lf9-apk.ugapk.cn/package/apk/jj_app/2632_64401/jj_app_download_app_normal_v2632_64401_277e_1679897332.apk?v=1679897334";
+        "https://lf9-apk.ugapk.cn/package/apk/jj_app/2632_64700/jj_app_download_app_normal_v2632_64700_3a55_1685343635.apk?v=1685343637";
     var response = await dio.get(
       uri,
       onReceiveProgress: (int count, int total) {
+        // 安装包 404 也会触发, 用响应体大小处理下
+        if (total <= 200) {
+          _installStatus = InstallStatus.normal;
+          _progress = 0;
+          setState(() {});
+          return;
+        }
         int progress = ((count / total) * 100).toInt();
         _progress = progress;
         setState(() {});
       },
     );
+
+    if (response.statusCode! >= 400) {
+      // LoadingUtil.error("下载失败(${response.statusCode} ${response.statusMessage})");
+      return;
+    }
 
     // 保存文件
     File file = File(fullPath);
@@ -320,12 +334,17 @@ class _AppUpdateDialogState extends State<AppUpdateDialog> {
   /// 安装 APK 包
   _installApkFunction(String fullPath) async {
     OpenResult result = await OpenFile.open(fullPath);
+    // LoggerUtil.debug("installApk result::${result.message}, $fullPath");
+
     // 没有权限则复制至临时目录进行打开安装
-    if (result.message.toUpperCase().contains('MANAGE_EXTERNAL_STORAGE')) {
+    if (result.message.toUpperCase().contains('MANAGE_EXTERNAL_STORAGE') ||
+        result.message.toUpperCase().contains('READ_EXTERNAL_STORAGE')) {
       final filename = fullPath.split('/').last;
       var newPath = '${(await getTemporaryDirectory()).path}/$filename';
       await File(fullPath).copy(newPath);
       result = await OpenFile.open(newPath);
+
+      // LoggerUtil.debug("兜底安装处理 result::${result.message}, $fullPath");
     }
   }
 

@@ -16,7 +16,7 @@ class AppUpdateUtil {
   /// 执行 APP 检查逻辑
   Future<void> run({bool? isBackground = true}) async {
     PermissionUtil.checkPermission(
-      permissions: [Permission.storage],
+      permissions: [Permission.manageExternalStorage],
       onSuccess: () => _checkAppVersion(isBackground!),
     );
   }
