@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_start/common/entities/index.dart';
 import 'package:flutter_start/common/widgets/index.dart';
+import 'package:flutter_start/config/index.dart';
 import 'package:get/get.dart';
 
 import 'controller.dart';
@@ -25,6 +26,16 @@ class MainPage extends GetView<MainController> {
               divider10Px(),
               _buildCommonWidget(),
               divider10Px(),
+              Container(
+                padding: EdgeInsets.all(16.w),
+                child: const Column(
+                  children: [
+                    Text("安卓渠道：${EnvConfig.channel}"),
+                    Text("构建版本：${EnvConfig.version}"),
+                    Text("API 默认环境：${EnvConfig.env}"),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
