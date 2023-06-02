@@ -43,6 +43,11 @@ class MainController extends GetxController {
       icon: Icons.security_outlined,
       path: AppRoutes.DEMO_PERMISSION,
     ),
+    Entry(
+      label: "系统能力",
+      icon: Icons.app_settings_alt_outlined,
+      path: AppRoutes.DEMO_SYSTEM_FUNC,
+    ),
   ];
 
   /// 常用组件

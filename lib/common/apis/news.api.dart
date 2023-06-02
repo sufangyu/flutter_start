@@ -1,5 +1,4 @@
 import 'package:flutter_start/common/entities/index.dart';
-import 'package:flutter_start/common/values/index.dart';
 import 'package:flutter_start/core/http/index.dart';
 import 'package:flutter_start/core/utils/index.dart';
 

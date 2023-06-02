@@ -37,4 +37,5 @@ class AppRoutes {
   static const DEMO_AMAP_MAP = '/demo/amap/map';
   static const DEMO_SHARES = '/demo/shares';
   static const DEMO_WATERMARK = '/demo/watermark';
+  static const DEMO_SYSTEM_FUNC = '/demo/system_func';
 }

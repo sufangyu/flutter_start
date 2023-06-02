@@ -53,6 +53,13 @@
     <true/>
     <key>NSAllowsArbitraryLoads</key>
     <true/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>sms</string>
+      <string>tel</string>
+      <string>mailto</string>
+    </array>
+
 	<key>NSCameraUsageDescription</key>
     <string>应用需要访问相机，以便于相机拍摄，上传、发布照片、视频，二维码识别</string>
     <key>NSMicrophoneUsageDescription</key>

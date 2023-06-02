@@ -31,19 +31,19 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 
     <!-- Permissions options for the `sms` group -->
-    <!--    <uses-permission android:name="android.permission.SEND_SMS"/>-->
-    <!--    <uses-permission android:name="android.permission.RECEIVE_SMS"/>-->
-    <!--    <uses-permission android:name="android.permission.READ_LOGS" tools:ignore="ProtectedPermissions"/>-->
-    <!--    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>-->
-    <!--    <uses-permission android:name="android.permission.RECEIVE_MMS"/>-->
+        <uses-permission android:name="android.permission.SEND_SMS"/>
+        <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+        <uses-permission android:name="android.permission.READ_LOGS" tools:ignore="ProtectedPermissions"/>
+        <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH"/>
+        <uses-permission android:name="android.permission.RECEIVE_MMS"/>
 
     <!-- Permissions options for the `phone` group -->
     <!--允许获取设备和运营商信息，用于问题排查和网络定位（无gps情况下的定位），若需网络定位功能则必选-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--    <uses-permission android:name="android.permission.CALL_PHONE" />-->
-    <!--    <uses-permission android:name="android.permission.USE_SIP" />-->
-    <!--    <uses-permission android:name="android.permission.READ_CALL_LOG" />-->
-    <!--    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />-->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.USE_SIP" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
 
     <!-- Permissions options for the `request install packages` group -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
@@ -63,6 +63,40 @@
     <!--允许写设备缓存，用于问题排查-->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:ignore="ProtectedPermissions"/>
 
+
+    <!-- url_launcher 打开手机应用能力配置 -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="mailto" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="weixin" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="alipays" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="taobao" />
+        </intent>
+    </queries>
 
     <application
         android:label="Flutter示例"
