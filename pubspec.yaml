@@ -87,6 +87,8 @@ dependencies:
   # 条形码、二维码识别
   scan: ^1.6.0
 
+  # 网络状态监控
+  connectivity_plus: ^4.0.1
   # 打开指定资源（跳转App Store）
   url_launcher: ^6.1.10
   # 打开文件

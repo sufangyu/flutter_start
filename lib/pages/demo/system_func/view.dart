@@ -32,7 +32,7 @@ class SystemFuncPage extends GetView<SystemFuncController> {
             },
             child: const Text("获取剪切板内容"),
           ),
-          const Divider(height: 50),
+          const Divider(height: 40),
 
           /// 打电话、发邮件、打开外部浏览器、打开外部APP ---------------------------
           ElevatedButton(
@@ -67,6 +67,21 @@ class SystemFuncPage extends GetView<SystemFuncController> {
           ElevatedButton(
             onPressed: () => SystemUtil.openApp('taobao://'),
             child: const Text("打开外部应用:淘宝"),
+          ),
+          const Divider(height: 40),
+
+          /// 网络连接 ---------------------------
+          ElevatedButton(
+            onPressed: controller.getConnectivity,
+            child: const Text("获取网络类型"),
+          ),
+          ElevatedButton(
+            onPressed: controller.startListenConnectivity,
+            child: const Text("开始监听网络变化"),
+          ),
+          ElevatedButton(
+            onPressed: controller.stopListenConnectivity,
+            child: const Text("停止监听网络变化"),
           ),
         ],
       ),

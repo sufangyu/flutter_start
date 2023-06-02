@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_start/common/widgets/index.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -92,6 +95,33 @@ class SystemUtil {
       }
       throw Exception('Could not launch -> $errMsg');
     }
+  }
+
+  /// 获取网络类型
+  /// * ConnectivityResult.mobile: 移动网络, 如: 4G、3G
+  /// * ConnectivityResult.wifi: WIFI
+  /// * ConnectivityResult.ethernet: 以太网, 宽带
+  /// * ConnectivityResult.vpn: VPN
+  /// * ConnectivityResult.bluetooth: 蓝牙
+  /// * ConnectivityResult.other: 其他
+  /// * ConnectivityResult.none: 无网络
+  static Future<ConnectivityResult> getConnectivity() async {
+    return await (Connectivity().checkConnectivity());
+  }
+
+  /// 开始监听网络连接类型变化
+  static startListenConnectivity({
+    void Function(ConnectivityResult result)? onChange,
+  }) {
+    StreamSubscription<ConnectivityResult> subscription =
+        Connectivity().onConnectivityChanged.listen(onChange);
+    return subscription;
+  }
+
+  /// 停止监听网络连接类型变化
+  static stopListenConnectivity(StreamSubscription? subscription) {
+    subscription?.cancel();
+    subscription = null;
   }
 }
 
