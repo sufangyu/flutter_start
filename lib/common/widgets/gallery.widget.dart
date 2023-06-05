@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chewie/chewie.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
@@ -262,7 +264,7 @@ class _GalleryWidgetState extends State<GalleryWidget>
         appBar: _galleryType == GalleryType.assets
             ? _buildPublishNav(itemsCount)
             : _buildPreviewNav(itemsCount),
-        body: body,
+        body: SafeArea(child: body),
         bottomSheet: _buildTimelineBar(_isShowAppBar),
       ),
     );
