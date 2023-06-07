@@ -6,6 +6,7 @@ import 'package:flutter_start/pages/demo/bottom_sheet/index.dart';
 import 'package:flutter_start/pages/demo/code_input_filed/index.dart';
 import 'package:flutter_start/pages/demo/dialog/index.dart';
 import 'package:flutter_start/pages/demo/dropdown_menu/index.dart';
+import 'package:flutter_start/pages/demo/form_validate/index.dart';
 import 'package:flutter_start/pages/demo/permission/index.dart';
 import 'package:flutter_start/pages/demo/popup/index.dart';
 import 'package:flutter_start/pages/demo/request/index.dart';
@@ -119,5 +120,11 @@ List<GetPage> demoRoutes = [
     title: '系统能力',
     page: () => const SystemFuncPage(),
     binding: SystemFuncBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_FORM_VALIDATE,
+    title: '表单验证',
+    page: () => const FormValidatePage(),
+    binding: FormValidateBinding(),
   ),
 ];

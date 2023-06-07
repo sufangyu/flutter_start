@@ -48,6 +48,11 @@ class MainController extends GetxController {
       icon: Icons.app_settings_alt_outlined,
       path: AppRoutes.DEMO_SYSTEM_FUNC,
     ),
+    Entry(
+      label: "表单验证",
+      icon: Icons.rule,
+      path: AppRoutes.DEMO_FORM_VALIDATE,
+    ),
   ];
 
   /// 常用组件

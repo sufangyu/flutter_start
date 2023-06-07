@@ -27,8 +27,12 @@ class LoadingUtil {
   }
 
   /// 显示 toast
-  static void toast(String text) {
-    EasyLoading.showToast(text);
+  static void toast(
+    String text, {
+    EasyLoadingToastPosition position = EasyLoadingToastPosition.center,
+    EasyLoadingMaskType maskType = EasyLoadingMaskType.black,
+  }) {
+    EasyLoading.showToast(text, toastPosition: position, maskType: maskType);
   }
 
   /// 显示 info

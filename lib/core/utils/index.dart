@@ -1,6 +1,7 @@
 library utils;
 
 export 'validator.util.dart';
+export 'validate/index.dart';
 export 'security.util.dart';
 export 'date.util.dart';
 export 'logger.util.dart';
