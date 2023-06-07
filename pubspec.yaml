@@ -138,10 +138,19 @@ dev_dependencies:
   # 自动生成 icons（flutter pub run flutter_launcher_icons）
   flutter_launcher_icons: ^0.11.0
 
+  # 初始化页面视图（flutter pub run flutter_create_view）
+  flutter_create_view:
+    path: ./packages/create_view
+
 flutter_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/icons/logo-1024.png"
+
+flutter_create_view:
+  base_dir_release_path: "/lib/pages"
+  template_dir_release_path: "_template"
+
 
 
 flutter:
