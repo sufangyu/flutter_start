@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 class VibrationState {
   // final _obj = ''.obs;

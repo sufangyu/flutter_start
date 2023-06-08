@@ -20,11 +20,13 @@ class ApplicationController extends GetxController {
 
   /// tab 栏动画
   void handleNavBarTap(int index) {
-    pageController.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.ease,
-    );
+    pageController.jumpToPage(index);
+
+    // pageController.animateToPage(
+    //   index,
+    //   duration: const Duration(milliseconds: 200),
+    //   curve: Curves.ease,
+    // );
   }
 
   /// tab 栏切换
@@ -89,6 +91,7 @@ class ApplicationController extends GetxController {
         backgroundColor: AppColors.primaryBackground,
       ),
     ];
+
     pageController = PageController(initialPage: state.page);
   }
 }

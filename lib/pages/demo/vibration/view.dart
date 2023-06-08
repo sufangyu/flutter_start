@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
-import 'package:vibration/vibration.dart';
 
 import 'controller.dart';
 
