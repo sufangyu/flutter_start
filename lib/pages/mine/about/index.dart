@@ -1,4 +1,4 @@
-library sign_in;
+library mine_about;
 
 export 'state.dart';
 export 'controller.dart';

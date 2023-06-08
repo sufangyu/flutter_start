@@ -1,4 +1,4 @@
-library sign_in;
+library frame_guide;
 
 export './state.dart';
 export './controller.dart';

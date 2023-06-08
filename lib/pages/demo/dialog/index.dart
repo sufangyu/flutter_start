@@ -1,4 +1,4 @@
-library sign_in;
+library demo_dialog;
 
 export './state.dart';
 export './controller.dart';

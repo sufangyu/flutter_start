@@ -1,4 +1,4 @@
-library sign_in;
+library application_main;
 
 export './state.dart';
 export './controller.dart';

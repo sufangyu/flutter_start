@@ -1,4 +1,4 @@
-library sign_in;
+library news_detail;
 
 export './state.dart';
 export './controller.dart';

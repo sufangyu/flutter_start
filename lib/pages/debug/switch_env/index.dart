@@ -1,4 +1,4 @@
-library sign_in;
+library debug_switch_env;
 
 export './state.dart';
 export './controller.dart';
