@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 
 import 'controller.dart';
@@ -90,17 +91,20 @@ class GuidePage extends GetView<GuideController> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: Container(
-        width: width,
-        height: height,
-        color: Colors.transparent,
-        child: Stack(
-          children: [
-            _buildBackground(width, height),
-            _buildDot(),
-            _buildGoApplication(),
-          ],
+    return WillPopScope(
+      onWillPop: AndroidUtil.closeApp,
+      child: Scaffold(
+        body: Container(
+          width: width,
+          height: height,
+          color: Colors.transparent,
+          child: Stack(
+            children: [
+              _buildBackground(width, height),
+              _buildDot(),
+              _buildGoApplication(),
+            ],
+          ),
         ),
       ),
     );

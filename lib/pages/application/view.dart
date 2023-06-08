@@ -2,6 +2,7 @@ import 'package:dio_log/dio_log.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_start/common/values/index.dart';
+import 'package:flutter_start/core/utils/index.dart';
 import 'package:flutter_start/pages/bookmarks/index.dart';
 import 'package:flutter_start/pages/category/index.dart';
 import 'package:flutter_start/pages/main/index.dart';
@@ -52,10 +53,12 @@ class ApplicationPage extends GetView<ApplicationController> {
       showDebugBtn(context);
     }
 
-    return Scaffold(
-      // appBar: _buildAppBar(),
-      body: _buildPageView(),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+    return WillPopScope(
+      onWillPop: AndroidUtil.closeApp,
+      child: Scaffold(
+        body: _buildPageView(),
+        bottomNavigationBar: _buildBottomNavigationBar(),
+      ),
     );
   }
 }

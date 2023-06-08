@@ -12,4 +12,5 @@ export 'compress.util.dart';
 export 'ui.util.dart';
 export 'system.util.dart';
 export 'vibrate.util.dart';
+export 'android.util.dart';
 export 'image.utils.dart';
