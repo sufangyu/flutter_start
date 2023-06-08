@@ -11,4 +11,5 @@ export 'permission.util.dart';
 export 'compress.util.dart';
 export 'ui.util.dart';
 export 'system.util.dart';
+export 'vibrate.util.dart';
 export 'image.utils.dart';

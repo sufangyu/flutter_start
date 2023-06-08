@@ -13,6 +13,7 @@ import 'package:flutter_start/pages/demo/request/index.dart';
 import 'package:flutter_start/pages/demo/shares/index.dart';
 import 'package:flutter_start/pages/demo/skeleton/index.dart';
 import 'package:flutter_start/pages/demo/system_func/index.dart';
+import 'package:flutter_start/pages/demo/vibration/index.dart';
 import 'package:flutter_start/pages/demo/watermark/index.dart';
 import 'package:flutter_start/pages/demo/wechat/post/index.dart';
 import 'package:flutter_start/pages/demo/wechat/timeline/index.dart';
@@ -126,5 +127,11 @@ List<GetPage> demoRoutes = [
     title: '表单验证',
     page: () => const FormValidatePage(),
     binding: FormValidateBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_VIBRATION,
+    title: '振动',
+    page: () => const VibrationPage(),
+    binding: VibrationBinding(),
   ),
 ];

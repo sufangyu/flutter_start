@@ -53,6 +53,11 @@ class MainController extends GetxController {
       icon: Icons.rule,
       path: AppRoutes.DEMO_FORM_VALIDATE,
     ),
+    Entry(
+      label: "振动",
+      icon: Icons.vibration,
+      path: AppRoutes.DEMO_VIBRATION,
+    ),
   ];
 
   /// 常用组件
