@@ -13,4 +13,5 @@ export 'ui.util.dart';
 export 'system.util.dart';
 export 'vibrate.util.dart';
 export 'android.util.dart';
+export 'uni_links.util.dart';
 export 'image.utils.dart';

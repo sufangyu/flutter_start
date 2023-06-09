@@ -19,6 +19,7 @@ class AppRoutes {
 
   /// DEBUG
   static const DEBUG_SWITCH_ENV = '/debug/switch_env';
+  static const DEBUG_SCHEME_JUMP = '/debug/scheme_jump';
 
   /// DEMO
   static const DEMO_PERMISSION = '/demo/permission';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_start/common/values/index.dart';
+import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 
 import 'state.dart';
@@ -35,7 +36,7 @@ class ApplicationController extends GetxController {
   }
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     super.onInit();
 
     // 准备一些静态数据
@@ -93,5 +94,14 @@ class ApplicationController extends GetxController {
     ];
 
     pageController = PageController(initialPage: state.page);
+
+    // 初始化、监听 scheme url 打开 APP
+    await UniLinksUtil.listen();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    UniLinksUtil.dispose();
   }
 }
