@@ -18,11 +18,12 @@ class Global {
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     setSystemUi();
-    // 示例化 loading
+    // 实例化 loading
     LoadingUtil();
 
     // APP 生命周期监听
     Get.put(LifeCycleController());
+
     // 初始化全局缓存
     await Get.putAsync<StorageService>(() => StorageService().init());
     // 全局状态

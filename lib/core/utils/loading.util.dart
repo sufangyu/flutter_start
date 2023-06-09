@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_start/common/widgets/index.dart';
 
 class LoadingUtil {
   LoadingUtil() {
@@ -33,6 +34,15 @@ class LoadingUtil {
     EasyLoadingMaskType maskType = EasyLoadingMaskType.black,
   }) {
     EasyLoading.showToast(text, toastPosition: position, maskType: maskType);
+  }
+
+  /// 原生 toast
+  static void toastNative(
+    String msg, {
+    Color backgroundColor = Colors.black,
+    Color textColor = Colors.white,
+  }) {
+    toastInfo(msg: msg, backgroundColor: backgroundColor, textColor: textColor);
   }
 
   /// 显示 info

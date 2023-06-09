@@ -22,7 +22,7 @@ import 'observers.dart';
 
 class AppPages {
   /// 初始化页面
-  static const INITIAL = AppRoutes.GUIDE_SCREEN;
+  static const INITIAL = AppRoutes.APPLICATION;
   // static const INITIAL = AppRoutes.DEMO_SHARES;
 
   /// 全局路由监听器
@@ -45,9 +45,7 @@ class AppPages {
       title: "引导页面",
       page: () => const GuidePage(),
       binding: GuideBinding(),
-      middlewares: [
-        WelcomeMiddleware(priority: 1),
-      ],
+      // middlewares: [],
     ),
     GetPage(
       name: AppRoutes.SIGN_IN,
@@ -72,9 +70,10 @@ class AppPages {
       name: AppRoutes.APPLICATION,
       page: () => const ApplicationPage(),
       binding: ApplicationBinding(),
-      // middlewares: [
-      //   RouteAuthMiddleware(priority: 1),
-      // ],
+      middlewares: [
+        WelcomeMiddleware(priority: 1),
+        // RouteAuthMiddleware(priority: 1),
+      ],
     ),
     GetPage(
       name: AppRoutes.MAIN,

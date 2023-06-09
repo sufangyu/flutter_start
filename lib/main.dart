@@ -14,9 +14,6 @@ import 'common/styles/index.dart';
 import 'global.dart';
 
 Future<void> main() async {
-  // await Global.init();
-  // runApp(const MyApp());
-
   FlutterBugly.postCatchedException(
     () async {
       // 如果需要 ensureInitialized，请在这里运行。

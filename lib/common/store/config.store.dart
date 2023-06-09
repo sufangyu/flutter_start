@@ -8,10 +8,12 @@ class ConfigStore extends GetxController {
   static ConfigStore get to => Get.find();
 
   /// 是否已打开（默认false）
-  bool isAlreadyOpen = false;
+  bool isAlreadyOpen =
+      StorageService.to.getBool(STORAGE_DEVICE_ALREADY_OPEN_KEY);
 
   /// 是否同意协议
-  bool isAgreementProtocol = false;
+  bool isAgreementProtocol =
+      StorageService.to.getBool(STORAGE_AGREEMENT_PROTOCOL_KEY);
 
   /// 发布渠道
   final String _channel = "";
@@ -39,16 +41,12 @@ class ConfigStore extends GetxController {
   String apiEnvCode = 'prod';
 
   @override
-  void onInit() async {
+  Future<void> onInit() async {
     super.onInit();
 
     await getPlatform();
     onInitLocale();
     getApiEnvCode();
-
-    isAlreadyOpen = StorageService.to.getBool(STORAGE_DEVICE_ALREADY_OPEN_KEY);
-    isAgreementProtocol =
-        StorageService.to.getBool(STORAGE_AGREEMENT_PROTOCOL_KEY);
   }
 
   /// 标记用户已打开APP
@@ -73,12 +71,12 @@ class ConfigStore extends GetxController {
     /// TODO: flutter run main.dart [参数]
     /// 1. 打release包：不可切环境、忽略本地缓存的API环境标识
     /// 2. 打指定环境的包、是否可以切换环境
-    String apiEnvCodeFromStorage =
+    String apiEnvCodeStorage =
         StorageService.to.getString(STORAGE_API_ENV_CODE_KEY);
-    LoggerUtil.info("apiEnvCodeFromStorage::-$apiEnvCodeFromStorage-");
+    LoggerUtil.info("apiEnvCodeFromStorage::-$apiEnvCodeStorage-");
 
-    if (apiEnvCodeFromStorage != '') {
-      apiEnvCode = apiEnvCodeFromStorage;
+    if (apiEnvCodeStorage != '') {
+      apiEnvCode = apiEnvCodeStorage;
     }
   }
 
