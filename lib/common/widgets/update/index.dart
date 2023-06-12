@@ -6,7 +6,6 @@ import 'package:flutter_start/common/apis/index.dart';
 import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import 'widgets/dialog.dart';
 
@@ -15,10 +14,11 @@ class AppUpdateUtil {
 
   /// 执行 APP 检查逻辑
   Future<void> run({bool? isBackground = true}) async {
-    PermissionUtil.checkPermission(
-      permissions: [Permission.manageExternalStorage],
-      onSuccess: () => _checkAppVersion(isBackground!),
-    );
+    // PermissionUtil.checkPermission(
+    //   permissions: [Permission.manageExternalStorage],
+    //   onSuccess: () => _checkAppVersion(isBackground!),
+    // );
+    _checkAppVersion(isBackground!);
   }
 
   /// 检查APP版本信息
