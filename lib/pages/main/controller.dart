@@ -113,6 +113,11 @@ class MainController extends GetxController {
       icon: Icons.ballot_outlined,
       path: AppRoutes.DEMO_SKELETON,
     ),
+    Entry(
+      label: "日期日期",
+      icon: Icons.date_range,
+      path: AppRoutes.DEMO_DATE_TIME_PICKER,
+    ),
   ];
 
   /// 生命周期 ========================================

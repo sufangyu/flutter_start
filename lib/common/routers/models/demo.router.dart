@@ -4,6 +4,7 @@ import 'package:flutter_start/pages/demo/amap/view_location.dart';
 import 'package:flutter_start/pages/demo/amap/view_map.dart';
 import 'package:flutter_start/pages/demo/bottom_sheet/index.dart';
 import 'package:flutter_start/pages/demo/code_input_filed/index.dart';
+import 'package:flutter_start/pages/demo/date_time_picker/index.dart';
 import 'package:flutter_start/pages/demo/dialog/index.dart';
 import 'package:flutter_start/pages/demo/dropdown_menu/index.dart';
 import 'package:flutter_start/pages/demo/form_validate/index.dart';
@@ -133,5 +134,11 @@ List<GetPage> demoRoutes = [
     title: '振动',
     page: () => const VibrationPage(),
     binding: VibrationBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_DATE_TIME_PICKER,
+    title: '时间日期选择器',
+    page: () => const DemoDateTimePickerPage(),
+    binding: DemoDateTimePickerBinding(),
   ),
 ];

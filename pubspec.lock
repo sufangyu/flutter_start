@@ -249,6 +249,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.3"
+  date_format:
+    dependency: "direct main"
+    description:
+      name: date_format
+      sha256: "8e5154ca363411847220c8cbc43afcf69c08e8debe40ba09d57710c25711760c"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.7"
   dbus:
     dependency: transitive
     description:
@@ -397,6 +405,14 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  flutter_datetime_picker_plus:
+    dependency: "direct main"
+    description:
+      name: flutter_datetime_picker_plus
+      sha256: "46c01682a65d6877b40622df2ca4f13b728e5440a9c83c3992c09724bb4dbd95"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.1"
   flutter_easyloading:
     dependency: "direct main"
     description:

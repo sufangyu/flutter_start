@@ -60,10 +60,9 @@ dependencies:
   shared_preferences: ^2.0.5
   cached_network_image: ^3.2.3
 
-  # 日期
+  # 国际（多语言）
   intl: ^0.18.0
-  # uuid
-  uuid: ^3.0.7
+
 
   # 摄像头拍摄
   camerawesome: ^1.4.0
@@ -77,6 +76,13 @@ dependencies:
   image_pickers: ^2.0.4+1
   # 生成二维码图片
   qr_flutter: ^4.1.0
+
+  # uuid
+  uuid: ^3.0.7
+  # 日期选择
+  flutter_datetime_picker_plus: ^2.0.1
+  # 日期格式化
+  date_format: ^2.0.7
 
   # 图片压缩
   flutter_image_compress: ^2.0.3
