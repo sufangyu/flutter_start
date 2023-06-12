@@ -72,7 +72,7 @@ class SignInController extends GetxController {
       params,
     );
 
-    UserStore.to().saveProfile(userProfile);
+    UserStore.to.saveProfile(userProfile);
     Get.offAllNamed(AppRoutes.APPLICATION);
     Get.back();
   }
@@ -98,7 +98,7 @@ class SignInController extends GetxController {
       params,
     );
 
-    UserStore.to().saveProfile(userProfile);
+    UserStore.to.saveProfile(userProfile);
     Get.offAllNamed(AppRoutes.APPLICATION);
     Get.back();
   }

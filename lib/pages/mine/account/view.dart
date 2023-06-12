@@ -4,6 +4,7 @@ import 'package:flutter_start/common/store/index.dart';
 import 'package:flutter_start/common/values/index.dart';
 import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_start/config/index.dart';
 import 'package:get/get.dart';
 
 import 'account.style.dart';
@@ -94,8 +95,9 @@ class AccountPage extends GetView<AccountController> {
                   ],
                 ),
               ),
-              // 切换环境
-              !ConfigStore.to.isRelease
+
+              /// 切换环境入口
+              EnvConfig.canSwitchEnv
                   ? Column(
                       children: [
                         divider10Px(),
@@ -113,7 +115,7 @@ class AccountPage extends GetView<AccountController> {
                         ),
                       ],
                     )
-                  : Container(),
+                  : const SizedBox.shrink(),
             ],
           ),
         ),
@@ -134,11 +136,11 @@ class AccountPage extends GetView<AccountController> {
               contentPadding: EdgeInsets.all(16.w),
               // dense: true,
               onTap: () {
-                if (UserStore.to().isLogin == false) {
+                if (UserStore.to.isLogin == false) {
                   Get.toNamed(AppRoutes.SIGN_IN);
                 }
               },
-              leading: UserStore.to().isLogin
+              leading: UserStore.to.isLogin
                   ? netImageCached(
                       "https://avatars.githubusercontent.com/u/1852629?v=4",
                       width: 48.w,
@@ -154,10 +156,10 @@ class AccountPage extends GetView<AccountController> {
                     ),
 
               title: Text(
-                UserStore.to().profile.displayName ?? '立即登录',
+                UserStore.to.profile.displayName ?? '立即登录',
                 style: TextStyle(fontSize: 18.sp),
               ),
-              trailing: UserStore.to().isLogin
+              trailing: UserStore.to.isLogin
                   ? null
                   : const Icon(Icons.keyboard_arrow_right),
             ),

@@ -61,7 +61,7 @@ class SettingPage extends GetView<SettingController> {
               color: Colors.white,
               child: ListTile(
                 onTap: () async {
-                  await UserStore.to().onLogout();
+                  await UserStore.to.onLogout();
                   Get.back();
                 },
                 title: Center(

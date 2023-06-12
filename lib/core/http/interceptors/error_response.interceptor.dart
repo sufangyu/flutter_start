@@ -25,7 +25,7 @@ class HttpErrorResponseInterceptor extends Interceptor {
 
     switch (errInfo.code) {
       case 401:
-        UserStore.to().onLogout();
+        UserStore.to.onLogout();
         break;
       default:
         break;

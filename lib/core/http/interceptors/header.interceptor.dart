@@ -21,8 +21,8 @@ class HttpHeaderInterceptor extends Interceptor {
   /// 读取本地存储的 token 信息拼装成 header
   Map<String, dynamic>? getAuthorizationHeader() {
     var headers = <String, dynamic>{};
-    if (Get.isRegistered<UserStore>() && UserStore.to().hasToken == true) {
-      headers['Authorization'] = 'Bearer ${UserStore.to().token}';
+    if (Get.isRegistered<UserStore>() && UserStore.to.hasToken == true) {
+      headers['Authorization'] = 'Bearer ${UserStore.to.token}';
     }
     return headers;
   }

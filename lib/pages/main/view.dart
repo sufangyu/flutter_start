@@ -30,9 +30,10 @@ class MainPage extends GetView<MainController> {
                 padding: EdgeInsets.all(16.w),
                 child: const Column(
                   children: [
-                    Text("安卓渠道：${EnvConfig.channel}"),
                     Text("构建版本：${EnvConfig.version}"),
                     Text("API 默认环境：${EnvConfig.env}"),
+                    Text("安卓渠道：${EnvConfig.channel}"),
+                    Text("可以切环境：${EnvConfig.canSwitchEnv}"),
                   ],
                 ),
               ),

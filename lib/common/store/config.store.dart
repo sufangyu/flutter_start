@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_start/common/values/index.dart';
+import 'package:flutter_start/config/index.dart';
 import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -16,7 +17,7 @@ class ConfigStore extends GetxController {
       StorageService.to.getBool(STORAGE_AGREEMENT_PROTOCOL_KEY);
 
   /// 发布渠道
-  final String _channel = "";
+  final String _channel = EnvConfig.channel;
   String get channel => _channel;
 
   /// 包信息
@@ -37,8 +38,8 @@ class ConfigStore extends GetxController {
   ];
 
   /// API 环境标识
-  final String _apiEnvCodeDefault = 'prod';
-  String apiEnvCode = 'prod';
+  final String _apiEnvCodeDefault = EnvConfig.env;
+  String apiEnvCode = EnvConfig.env;
 
   @override
   Future<void> onInit() async {
@@ -47,6 +48,8 @@ class ConfigStore extends GetxController {
     await getPlatform();
     onInitLocale();
     getApiEnvCode();
+
+    LoggerUtil.debug("ConfigStore onInit:: 当前环境->>$apiEnvCode");
   }
 
   /// 标记用户已打开APP
@@ -73,7 +76,7 @@ class ConfigStore extends GetxController {
     /// 2. 打指定环境的包、是否可以切换环境
     String apiEnvCodeStorage =
         StorageService.to.getString(STORAGE_API_ENV_CODE_KEY);
-    LoggerUtil.info("apiEnvCodeFromStorage::-$apiEnvCodeStorage-");
+    // LoggerUtil.info("apiEnvCodeFromStorage::-$apiEnvCodeStorage-");
 
     if (apiEnvCodeStorage != '') {
       apiEnvCode = apiEnvCodeStorage;

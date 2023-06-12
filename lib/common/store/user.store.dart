@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
 class UserStore extends GetxController {
-  static UserStore to() => Get.find();
+  static UserStore get to => Get.find();
 
   // 是否登录
   final _isLogin = false.obs;
