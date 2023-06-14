@@ -7,7 +7,7 @@ class LoggerUtil {
     level: Level.verbose,
     printer: PrefixPrinter(PrettyPrinter(
       stackTraceBeginIndex: 0, // 方法栈的开始下标
-      methodCount: 5, // 打印方法栈的个数
+      methodCount: 3, // 打印方法栈的个数
       errorMethodCount: 8, // 自己传入方法栈对象后该参数有效
       lineLength: 120, // 每行最多打印的字符个数
       colors: true, // 日志是否有颜色

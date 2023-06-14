@@ -1,12 +1,53 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_start/common/routers/index.dart';
 import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:scan/scan.dart';
 
-class ScanPageController extends GetxController {
-  final ScanController scanController = ScanController();
+class ScanPageController extends GetxController with WidgetsBindingObserver {
+  late MobileScannerController? cameraController = MobileScannerController();
+
+  @override
+  void onInit() {
+    super.onInit();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    disposeCamera();
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    // LoggerUtil.debug('state::$state');
+    // 根据不同的场景设置扫描暂停、开始, 以优化性能
+    switch (state) {
+      case AppLifecycleState.resumed:
+        cameraController?.start();
+        break;
+      case AppLifecycleState.inactive:
+        cameraController?.stop();
+        break;
+      case AppLifecycleState.paused:
+        cameraController?.stop();
+        break;
+      case AppLifecycleState.detached:
+        disposeCamera();
+        break;
+    }
+  }
+
+  void disposeCamera() {
+    cameraController?.stop();
+    cameraController?.dispose();
+    cameraController = null;
+  }
 
   /// 手电筒是否打开
   final RxBool _isFlashOn = false.obs;
@@ -15,7 +56,7 @@ class ScanPageController extends GetxController {
 
   /// 切换手电筒模式
   void toggleTorchMode() {
-    scanController.toggleTorchMode();
+    cameraController?.toggleTorch();
     _isFlashOn.value = !_isFlashOn.value;
   }
 
@@ -30,29 +71,41 @@ class ScanPageController extends GetxController {
         final XFile? image = await picker.pickImage(
           source: ImageSource.gallery,
         );
+
         if (image == null) {
           return;
         }
-        scanController.pause();
-        String? result = await Scan.parse(image.path);
-        handleScanResult(result);
+
+        bool? result = await cameraController?.analyzeImage(image.path);
+        LoggerUtil.debug("识别本地图片结果::$result");
+        if (result == false) {
+          LoadingUtil.toast('无法识别图片二维码/条形码');
+        }
       },
     );
   }
 
-  void handleScanResult(String? result) {
-    LoggerUtil.debug("识别结果::$result");
+  /// 扫描结果
+  void onDetect(BarcodeCapture capture) {
+    final List<Barcode> barcodes = capture.barcodes;
+    String? result = barcodes.first.rawValue;
+
     if (result == null) {
-      LoadingUtil.error('二维码无法识别，请重试');
       return;
     }
+
+    LoggerUtil.debug("scan capture::$result");
+    cameraController?.stop();
+    VibrateUtil.light();
+
+    // 是否返回值给上一个页面
+    bool? isInput = Get.arguments?['isInput'];
+    if (isInput == true) {
+      Get.back<String>(result: result);
+      return;
+    }
+
     // TODO: 处理识别结果
     Get.offNamed(AppRoutes.DEBUG_SWITCH_ENV);
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    scanController.pause();
   }
 }

@@ -708,6 +708,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.4"
+  mobile_scanner:
+    dependency: "direct main"
+    description:
+      name: mobile_scanner
+      sha256: da55204e5439bc8dc058df56231a7a1d513c6ec9cbad84492f56d493382d296f
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.2.0"
   nested:
     dependency: transitive
     description:
@@ -940,14 +948,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.27.7"
-  scan:
-    dependency: "direct main"
-    description:
-      name: scan
-      sha256: b343ec36f863a88d41eb4c174b810c055c6bd1f1822b2188ab31aab684fb7cdb
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.6.0"
   scope:
     dependency: transitive
     description:

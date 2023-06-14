@@ -5,6 +5,7 @@ import 'package:flutter_start/common/values/index.dart';
 import 'package:flutter_start/common/widgets/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_start/config/index.dart';
+import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 
 import 'account.style.dart';
@@ -29,7 +30,14 @@ class AccountPage extends GetView<AccountController> {
               child: IconButton(
                 padding: const EdgeInsets.all(0.0),
                 icon: const Icon(Icons.crop_free),
-                onPressed: () => Get.toNamed(AppRoutes.SCAN),
+                onPressed: () async {
+                  var result = await Get.toNamed(
+                    AppRoutes.SCAN,
+                    arguments: {'isInput': true},
+                  );
+                  LoggerUtil.debug("result::$result");
+                  LoadingUtil.success("扫描返回结果::$result");
+                },
               ),
             ),
             Container(
