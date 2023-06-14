@@ -66,7 +66,7 @@ class PopupWindow {
 
   /// 关闭
   static close() async {
-    await popupKey.currentState?.onClose();
+    // await popupKey.currentState?.onClose();
     overlayEntry?.remove();
     overlayEntry = null;
   }

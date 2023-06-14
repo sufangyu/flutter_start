@@ -50,6 +50,8 @@ dependencies:
   easy_dialog: ^1.1.1
   # easyloading
   flutter_easyloading: ^3.0.5
+  # popover
+  popover: ^0.2.8+2
 
   # http
   dio: ^4.0.6

@@ -9,6 +9,8 @@ import 'package:flutter_start/pages/demo/dialog/index.dart';
 import 'package:flutter_start/pages/demo/dropdown_menu/index.dart';
 import 'package:flutter_start/pages/demo/form_validate/index.dart';
 import 'package:flutter_start/pages/demo/permission/index.dart';
+import 'package:flutter_start/pages/demo/popover/bindings.dart';
+import 'package:flutter_start/pages/demo/popover/view.dart';
 import 'package:flutter_start/pages/demo/popup/index.dart';
 import 'package:flutter_start/pages/demo/request/index.dart';
 import 'package:flutter_start/pages/demo/shares/index.dart';
@@ -140,5 +142,11 @@ List<GetPage> demoRoutes = [
     title: '时间日期选择器',
     page: () => const DemoDateTimePickerPage(),
     binding: DemoDateTimePickerBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_POPOVER,
+    title: '气泡弹窗',
+    page: () => const DemoPopoverPage(),
+    binding: DemoPopoverBinding(),
   ),
 ];

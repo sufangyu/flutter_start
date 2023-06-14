@@ -42,4 +42,5 @@ class AppRoutes {
   static const DEMO_FORM_VALIDATE = '/demo/form_validate';
   static const DEMO_VIBRATION = '/demo/vibration';
   static const DEMO_DATE_TIME_PICKER = '/demo/date_time_picker';
+  static const DEMO_POPOVER = '/demo/popover';
 }

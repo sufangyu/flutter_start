@@ -114,9 +114,14 @@ class MainController extends GetxController {
       path: AppRoutes.DEMO_SKELETON,
     ),
     Entry(
-      label: "日期日期",
+      label: "日期时间",
       icon: Icons.date_range,
       path: AppRoutes.DEMO_DATE_TIME_PICKER,
+    ),
+    Entry(
+      label: "气泡弹窗",
+      icon: Icons.filter_frames_outlined,
+      path: AppRoutes.DEMO_POPOVER,
     ),
   ];
 
