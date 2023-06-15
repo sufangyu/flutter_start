@@ -1,4 +1,4 @@
-import 'package:date_format/date_format.dart';
+import 'package:day/day.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
@@ -47,10 +47,10 @@ class DemoDateTimePickerController extends GetxController {
       Get.context!,
       locale: picker.LocaleType.zh,
       onConfirm: (date) {
-        LoggerUtil.debug('confirm::$date, formatDate::${formatDate(
-          date,
-          [yyyy, '年', mm, '月', dd, '日'],
-        )}');
+        LoggerUtil.debug(''
+            'confirm::$date, '
+            'formatDate::${Day.fromDateTime(date).format('YYYY年MM月DD日')}'
+            '');
       },
       currentTime: DateTime(2008, 12, 31, 23, 12, 34),
     );
