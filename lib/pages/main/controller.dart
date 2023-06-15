@@ -128,6 +128,11 @@ class MainController extends GetxController {
       icon: Icons.sort_by_alpha,
       path: AppRoutes.DEMO_AZ_LIST_VIEW,
     ),
+    Entry(
+      label: "侧滑菜单",
+      icon: Icons.landslide,
+      path: AppRoutes.DEMO_SLIDABLE,
+    ),
   ];
 
   /// 生命周期 ========================================

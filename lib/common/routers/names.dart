@@ -46,4 +46,5 @@ class AppRoutes {
   static const DEMO_DATE_TIME_PICKER = '/demo/date_time_picker';
   static const DEMO_POPOVER = '/demo/popover';
   static const DEMO_AZ_LIST_VIEW = '/demo/az_list_view';
+  static const DEMO_SLIDABLE = '/demo/slidable';
 }

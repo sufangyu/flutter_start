@@ -57,6 +57,8 @@ dependencies:
   scrollable_positioned_list: ^0.2.3
   # 汉字转拼音
   lpinyin: ^2.0.3
+  # 侧滑菜单
+  flutter_slidable: ^3.0.0
 
   # http
   dio: ^4.0.6

@@ -16,6 +16,7 @@ import 'package:flutter_start/pages/demo/popup/index.dart';
 import 'package:flutter_start/pages/demo/request/index.dart';
 import 'package:flutter_start/pages/demo/shares/index.dart';
 import 'package:flutter_start/pages/demo/skeleton/index.dart';
+import 'package:flutter_start/pages/demo/slidable/index.dart';
 import 'package:flutter_start/pages/demo/system_func/index.dart';
 import 'package:flutter_start/pages/demo/vibration/index.dart';
 import 'package:flutter_start/pages/demo/watermark/index.dart';
@@ -155,5 +156,11 @@ List<GetPage> demoRoutes = [
     title: '索引列表',
     page: () => const AZListViewDemoPage(),
     binding: AZListViewDemoBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_SLIDABLE,
+    title: '侧滑菜单',
+    page: () => const DemoSlidablePage(),
+    binding: DemoSlidableBinding(),
   ),
 ];
