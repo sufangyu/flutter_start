@@ -7,6 +7,8 @@ class AppRoutes {
   static const NOT_FOUND = '/not_found';
   static const GUIDE_SCREEN = '/guide_screen';
   static const SCAN = '/scan';
+  static const AZ_LIST_VIEW = '/az_list_view';
+  static const AZ_LIST_VIEW_CITY_CUSTOM = '/az_list_view_city_custom';
 
   static const APPLICATION = '/application';
   static const MAIN = '/main';
@@ -43,4 +45,5 @@ class AppRoutes {
   static const DEMO_VIBRATION = '/demo/vibration';
   static const DEMO_DATE_TIME_PICKER = '/demo/date_time_picker';
   static const DEMO_POPOVER = '/demo/popover';
+  static const DEMO_AZ_LIST_VIEW = '/demo/az_list_view';
 }

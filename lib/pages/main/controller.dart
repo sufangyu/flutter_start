@@ -123,6 +123,11 @@ class MainController extends GetxController {
       icon: Icons.filter_frames_outlined,
       path: AppRoutes.DEMO_POPOVER,
     ),
+    Entry(
+      label: "索引列表",
+      icon: Icons.sort_by_alpha,
+      path: AppRoutes.DEMO_AZ_LIST_VIEW,
+    ),
   ];
 
   /// 生命周期 ========================================

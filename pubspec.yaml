@@ -52,6 +52,11 @@ dependencies:
   flutter_easyloading: ^3.0.5
   # popover
   popover: ^0.2.8+2
+  # 诚城市选择
+  azlistview: ^2.0.0
+  scrollable_positioned_list: ^0.2.3
+  # 汉字转拼音
+  lpinyin: ^2.0.3
 
   # http
   dio: ^4.0.6
@@ -200,6 +205,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/guide/
+    - assets/data/
 
   fonts:
     - family: Iconfont

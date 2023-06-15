@@ -2,6 +2,7 @@ import 'package:flutter_start/common/routers/index.dart';
 import 'package:flutter_start/pages/demo/amap/index.dart';
 import 'package:flutter_start/pages/demo/amap/view_location.dart';
 import 'package:flutter_start/pages/demo/amap/view_map.dart';
+import 'package:flutter_start/pages/demo/az_list_view/index.dart';
 import 'package:flutter_start/pages/demo/bottom_sheet/index.dart';
 import 'package:flutter_start/pages/demo/code_input_filed/index.dart';
 import 'package:flutter_start/pages/demo/date_time_picker/index.dart';
@@ -148,5 +149,11 @@ List<GetPage> demoRoutes = [
     title: '气泡弹窗',
     page: () => const DemoPopoverPage(),
     binding: DemoPopoverBinding(),
+  ),
+  GetPage(
+    name: AppRoutes.DEMO_AZ_LIST_VIEW,
+    title: '索引列表',
+    page: () => const AZListViewDemoPage(),
+    binding: AZListViewDemoBinding(),
   ),
 ];

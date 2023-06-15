@@ -6,14 +6,10 @@ import 'package:flutter_start/pages/bookmarks/index.dart';
 import 'package:flutter_start/pages/category/bindings.dart';
 import 'package:flutter_start/pages/category/view.dart';
 import 'package:flutter_start/pages/detail/index.dart';
-import 'package:flutter_start/pages/frame/guide/index.dart';
-import 'package:flutter_start/pages/frame/sign_in/index.dart';
-import 'package:flutter_start/pages/frame/sign_up/index.dart';
 import 'package:flutter_start/pages/main/index.dart';
 import 'package:flutter_start/pages/mine/about/index.dart';
 import 'package:flutter_start/pages/mine/account/index.dart';
 import 'package:flutter_start/pages/mine/setting/index.dart';
-import 'package:flutter_start/pages/scan/index.dart';
 import 'package:get/get.dart';
 
 import 'models/index.dart';
@@ -40,31 +36,9 @@ class AppPages {
 
   /// 路由配置
   static final List<GetPage> routes = [
-    GetPage(
-      name: AppRoutes.GUIDE_SCREEN,
-      title: "引导页面",
-      page: () => const GuidePage(),
-      binding: GuideBinding(),
-      // middlewares: [],
-    ),
-    GetPage(
-      name: AppRoutes.SIGN_IN,
-      title: "登录页",
-      page: () => const SignInPage(),
-      binding: SignInBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.SIGN_UP,
-      title: "注册页",
-      page: () => const SignUpPage(),
-      binding: SignUpBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.SCAN,
-      title: '扫描',
-      page: () => const ScanPage(),
-      binding: ScanBinding(),
-    ),
+    /// framework
+    ...frameworkRoutes,
+
     // 需要登录
     GetPage(
       name: AppRoutes.APPLICATION,
