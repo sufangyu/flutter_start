@@ -89,6 +89,8 @@ dependencies:
   uuid: ^3.0.7
   # 日期选择
   flutter_datetime_picker_plus: ^2.0.1
+  syncfusion_flutter_datepicker: ^21.2.10
+
   # 日期格式化
   day: ^0.8.0
 

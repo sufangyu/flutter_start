@@ -4,6 +4,7 @@ import 'package:flutter_start/core/utils/index.dart';
 import 'package:get/get.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
     as picker;
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import 'custom_picker/index.dart';
 import 'state.dart';
@@ -102,6 +103,34 @@ class DemoDateTimePickerController extends GetxController {
     picker.DatePicker.showDateTimePicker(
       Get.context!,
       locale: picker.LocaleType.zh,
+    );
+  }
+
+  ///
+  final DateRangePickerController _controller = DateRangePickerController();
+
+  Future dateRange() {
+    return showModalBottomSheet(
+      context: Get.context!,
+      elevation: 0,
+      builder: (context) {
+        return SafeArea(
+          child: SfDateRangePicker(
+            controller: _controller,
+            showNavigationArrow: true,
+            showActionButtons: true,
+            navigationDirection: DateRangePickerNavigationDirection.vertical,
+            selectionMode: DateRangePickerSelectionMode.range,
+            confirmText: '确定',
+            cancelText: '取消',
+            onSubmit: (Object? args) {
+              LoggerUtil.debug("args::$args, "
+                  "${(args as PickerDateRange).startDate}, ${(args).endDate}");
+              Get.back();
+            },
+          ),
+        );
+      },
     );
   }
 }

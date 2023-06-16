@@ -51,6 +51,13 @@ class DemoDateTimePickerPage extends GetView<DemoDateTimePickerController> {
 
           ///
           const Divider(height: 36),
+          OutlinedButton(
+            onPressed: controller.dateRange,
+            child: const Text("日期范围"),
+          ),
+
+          ///
+          const Divider(height: 36),
           const Text(
             '日期格式化: ',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
