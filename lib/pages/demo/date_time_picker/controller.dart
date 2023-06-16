@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
     as picker;
 
+import 'custom_picker/index.dart';
 import 'state.dart';
 
 class DemoDateTimePickerController extends GetxController {
@@ -53,6 +54,21 @@ class DemoDateTimePickerController extends GetxController {
             '');
       },
       currentTime: DateTime(2008, 12, 31, 23, 12, 34),
+    );
+  }
+
+  /// 年月选择器
+  void datePickerYearMonth() {
+    picker.DatePicker.showPicker(
+      Get.context!,
+      locale: picker.LocaleType.zh,
+      onConfirm: (date) {
+        LoggerUtil.debug('confirm $date');
+      },
+      pickerModel: YearMonthPicker(
+        currentTime: DateTime.now(),
+        locale: picker.LocaleType.zh,
+      ),
     );
   }
 

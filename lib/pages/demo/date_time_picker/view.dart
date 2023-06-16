@@ -21,23 +21,29 @@ class DemoDateTimePickerPage extends GetView<DemoDateTimePickerController> {
         padding: const EdgeInsets.all(16),
         children: [
           ElevatedButton(
-            onPressed: controller.normalDatePicker,
-            child: const Text("日期选择器(自定义主题+时间范围)"),
-          ),
-          ElevatedButton(
             onPressed: controller.currentDatePicker,
             child: const Text("日期选择器(默认日期)"),
           ),
+          ElevatedButton(
+            onPressed: controller.datePickerYearMonth,
+            child: const Text("日期选择器(年+月)"),
+          ),
+          ElevatedButton(
+            onPressed: controller.normalDatePicker,
+            child: const Text("日期选择器(自定义主题+时间范围)"),
+          ),
           const Divider(height: 36),
+
           ElevatedButton(
             onPressed: controller.normalTimePicker,
-            child: const Text("时间选择器(默认日期)"),
+            child: const Text("时间选择器(时+分)"),
           ),
           ElevatedButton(
             onPressed: controller.customDatePicker,
             child: const Text("时间（自定义选择项）"),
           ),
           const Divider(height: 36),
+
           ElevatedButton(
             onPressed: controller.dateTimePicker,
             child: const Text("日期+时间"),
