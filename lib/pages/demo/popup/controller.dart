@@ -79,6 +79,7 @@ class PopupController extends GetxController {
       position: PopupPosition.bottom,
       child: _buildPopupContent(),
       round: true,
+      closeable: true,
       title: const Text("我是标题", style: TextStyle(fontSize: 16)),
       onClosed: () {
         LoggerUtil.debug("关闭回调方法");

@@ -9,7 +9,6 @@ GlobalKey<PopupWidgetState> popupKey = GlobalKey();
 class PopupWidget extends StatefulWidget {
   const PopupWidget({
     Key? key,
-    required this.onCloseOverlay,
     required this.child,
     this.position,
     this.width,
@@ -22,7 +21,6 @@ class PopupWidget extends StatefulWidget {
     this.onClosed,
   }) : super(key: key);
 
-  final Function() onCloseOverlay;
   final Widget child;
 
   /// 弹窗位置
@@ -68,13 +66,6 @@ class PopupWidgetState extends State<PopupWidget>
   /// 圆角
   late BorderRadiusGeometry? _borderRadius = borderRadiusZero;
 
-  // 遮罩层动画
-  late final AnimationController _opacityController = AnimationController(
-    vsync: this,
-    duration: inDuration,
-    reverseDuration: outDuration,
-  );
-
   late final AnimationController _animController = AnimationController(
     duration: inDuration,
     reverseDuration: outDuration,
@@ -92,7 +83,6 @@ class PopupWidgetState extends State<PopupWidget>
 
     _initContentState();
     _animController.forward();
-    _opacityController.forward();
   }
 
   /// 初始化内容状态（动画、圆角）
@@ -136,22 +126,22 @@ class PopupWidgetState extends State<PopupWidget>
   void dispose() {
     super.dispose();
     _animController.dispose();
-    _opacityController.dispose();
   }
 
   /// 关闭弹窗
   Future<void> onClose() async {
-    if (_animController.status != AnimationStatus.completed ||
-        _opacityController.status != AnimationStatus.completed) {
+    if (_animController.status != AnimationStatus.completed) {
       return;
     }
-    await _animController.reverse();
-    await _opacityController.reverse();
-    widget.onCloseOverlay();
 
-    if (widget.onClosed != null) {
-      widget.onClosed!();
+    await _animController.reverse();
+
+    if (context.mounted) {
+      Navigator.of(context).pop();
     }
+
+    // 关闭回调
+    widget.onClosed?.call();
   }
 
   /// 头部信息
@@ -204,23 +194,6 @@ class PopupWidgetState extends State<PopupWidget>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // 遮罩层
-        GestureDetector(
-          onTap: () async {
-            if (widget.closeOnMaskClick != true) {
-              return;
-            }
-            onClose();
-          },
-          child: FadeTransition(
-            opacity: _opacityController,
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: Colors.black.withOpacity(.45),
-            ),
-          ),
-        ),
         AnimatedBuilder(
           animation: _animController,
           builder: (BuildContext ctx, child) {

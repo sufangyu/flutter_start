@@ -5,7 +5,7 @@ var defaultWidth = 320.0;
 var defaultHeight = 540.0;
 
 /// 运动配置
-var inDuration = const Duration(milliseconds: 200);
+var inDuration = const Duration(milliseconds: 250);
 var outDuration = const Duration(milliseconds: 250);
 
 /// 圆角配置
