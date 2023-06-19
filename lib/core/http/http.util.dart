@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:curl_logger_dio_interceptor/curl_logger_dio_interceptor.dart';
-import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:dio_log/interceptor/dio_log_interceptor.dart';
 import 'package:flutter/foundation.dart';
@@ -48,7 +48,7 @@ class HttpUtil {
     _dio.interceptors.add(FailResponseInterceptor());
 
     if (kDebugMode) {
-      _dio.interceptors.add(CurlLoggerDioInterceptor(printOnSuccess: false));
+      _dio.interceptors.add(CurlLoggerDioInterceptor(printOnSuccess: true));
       // FIXME: 流、二进制文件会拦截报错保存
       _dio.interceptors.add(DioLogInterceptor());
     }
@@ -63,24 +63,22 @@ class HttpUtil {
   static void setProxy(Dio dioInstance) async {
     HttpProxy httpProxy = await HttpProxy.createHttpProxy();
     LoggerUtil.debug(
-        "systemProxy::$httpProxy, host->>${httpProxy.host},port->>${httpProxy.port}");
+        "systemProxy::host->>${httpProxy.host},port->>${httpProxy.port}");
 
     if (httpProxy.host == null || httpProxy.port == null) {
       return;
     }
-
-    (dioInstance.httpClientAdapter as DefaultHttpClientAdapter)
-        .onHttpClientCreate = (HttpClient client) {
-      client.findProxy = (uri) {
-        String proxy = "PROXY ${httpProxy.host}:${httpProxy.port}";
-        return proxy;
-      };
-      // 禁用证书校验
-      client.badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-
-      return null;
-    };
+    dioInstance.httpClientAdapter = IOHttpClientAdapter(
+      createHttpClient: () {
+        final client = HttpClient();
+        client.findProxy = (uri) {
+          return 'PROXY ${httpProxy.host}:${httpProxy.port}';
+        };
+        client.badCertificateCallback =
+            (X509Certificate cert, String host, int port) => true;
+        return client;
+      },
+    );
   }
 
   /// 取消请求
@@ -125,7 +123,7 @@ class HttpUtil {
         onReceiveProgress: onReceiveProgress,
       );
       return response;
-    } on DioError catch (err) {
+    } on DioException catch (err) {
       LoggerUtil.error("dio.request DioError::${err.toString()}");
     } on Exception catch (e) {
       LoggerUtil.error("dio.request Exception::${e.toString()}");
@@ -346,7 +344,6 @@ class HttpUtil {
     String loadingText = '下载中...',
   }) async {
     Options requestOptions = (options ?? Options()).copyWith(
-      receiveTimeout: 0,
       extra: {
         'hasLoading': hasLoading,
         'loadingText': loadingText,
@@ -375,12 +372,12 @@ class HttpUtil {
         },
       );
       return response;
-    } on DioError catch (err) {
+    } on DioException catch (err) {
       LoggerUtil.error("dio.download DioError::${err.toString()}");
       if (CancelToken.isCancel(err)) {
         LoadingUtil.info("已取消下载");
       } else {
-        LoadingUtil.error(err.message);
+        LoadingUtil.error(err.message ?? 'unknown error!');
       }
     } on Exception catch (e) {
       LoggerUtil.error("dio.download Exception::${e.toString()}");

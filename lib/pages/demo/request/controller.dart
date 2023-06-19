@@ -18,7 +18,7 @@ class RequestController extends GetxController {
 
   /// 文件下载
   String apkUri =
-      "https://lf9-apk.ugapk.cn/package/apk/jj_app/2632_64401/jj_app_download_app_normal_v2632_64401_277e_1679897332.apk";
+      "https://lf9-apk.ugapk.cn/package/apk/jj_app/2632_64700/jj_app_download_app_normal_v2632_64700_3a55_1685343635.apk";
   late CancelToken _downloadToken;
   final _downloadRatio = 0.0.obs;
   double get downloadRatio => _downloadRatio.value;

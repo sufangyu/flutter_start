@@ -6,7 +6,7 @@ import 'package:flutter_start/core/utils/index.dart';
 class HttpErrorResponseInterceptor extends Interceptor {
   @override
   void onError(
-    DioError err,
+    DioException err,
     ErrorInterceptorHandler handler,
   ) async {
     LoadingUtil.dismiss();
@@ -33,20 +33,18 @@ class HttpErrorResponseInterceptor extends Interceptor {
   }
 
   // 错误信息
-  static ErrorEntity createErrorEntity(DioError error) {
+  static ErrorEntity createErrorEntity(DioException error) {
     switch (error.type) {
-      // case DioErrorType.connectionTimeout:
-      case DioErrorType.connectTimeout:
+      case DioExceptionType.connectionTimeout:
         return ErrorEntity(code: -1, message: "连接超时");
-      case DioErrorType.sendTimeout:
+      case DioExceptionType.sendTimeout:
         return ErrorEntity(code: -1, message: "请求超时");
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.receiveTimeout:
         return ErrorEntity(code: -1, message: "响应超时");
-      case DioErrorType.cancel:
+      case DioExceptionType.cancel:
         return ErrorEntity(code: -1, message: "请求取消");
-      // case DioErrorType.badResponse:
-      case DioErrorType.response:
-      case DioErrorType.other:
+      case DioExceptionType.badResponse:
+      case DioExceptionType.unknown:
         {
           try {
             // LoggerUtil.debug("error.response?.statusCode:: ${error.response?.statusCode}");
@@ -84,7 +82,8 @@ class HttpErrorResponseInterceptor extends Interceptor {
           }
         }
       default:
-        return ErrorEntity(code: -1, message: error.message);
+        return ErrorEntity(
+            code: -1, message: error.message ?? 'unknown error!');
     }
   }
 }

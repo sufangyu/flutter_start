@@ -6,11 +6,11 @@ class HttpConfig {
   /// 基本 url
   static const String baseUrl = ''; // "http://localhost:3000";
 
-  /// 连接服务器超时时间，单位是毫秒
-  static const int connectTimeout = 50000;
+  /// 连接服务器超时时间，单位是秒.（当前值为60秒）
+  static const Duration connectTimeout = Duration(seconds: 1 * 60);
 
-  /// 响应流上前后两次接受到数据的间隔，单位为毫秒。
-  static const int receiveTimeout = 5000;
+  /// 响应流上前后两次接受到数据的间隔，单位为秒（当前值为30秒）
+  static const Duration receiveTimeout = Duration(seconds: 30);
 
   /// 请求传值的内容类型（"application/json; charset=utf-8"）
   static const String contentType = Headers.jsonContentType;
