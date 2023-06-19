@@ -52,8 +52,8 @@ class DemoSlidablePage extends GetView<DemoSlidableController> {
             ],
           ),
           endActionPane: ActionPane(
-            extentRatio: 0.8, // 宽度比
-            motion: const ScrollMotion(),
+            extentRatio: 0.6, // 宽度比
+            motion: const BehindMotion(),
             children: [
               SlidableAction(
                 flex: 2,

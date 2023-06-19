@@ -130,7 +130,7 @@ class MainController extends GetxController {
     ),
     Entry(
       label: "侧滑菜单",
-      icon: Icons.landslide,
+      icon: Icons.menu_open_outlined,
       path: AppRoutes.DEMO_SLIDABLE,
     ),
   ];
