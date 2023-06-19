@@ -115,6 +115,8 @@ PODS:
   - GoogleUtilitiesComponents (1.1.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (2.3.0)
+  - http_proxy (0.0.1):
+    - Flutter
   - image_picker_ios (0.0.1):
     - Flutter
   - image_pickers (0.0.1):
@@ -219,6 +221,7 @@ DEPENDENCIES:
   - flutter_bugly (from `.symlinks/plugins/flutter_bugly/ios`)
   - flutter_image_compress_common (from `.symlinks/plugins/flutter_image_compress_common/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - http_proxy (from `.symlinks/plugins/http_proxy/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - image_pickers (from `.symlinks/plugins/image_pickers/ios`)
   - mobile_scanner (from `.symlinks/plugins/mobile_scanner/ios`)
@@ -292,6 +295,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_image_compress_common/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
+  http_proxy:
+    :path: ".symlinks/plugins/http_proxy/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
   image_pickers:
@@ -353,6 +358,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 9aa0ad5a7bc171f8bae016300bfcfa3fb8425749
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
+  http_proxy: 20f129d3e1c70cfdef92530b374c619832027729
   image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
   image_pickers: 4406949954a5eb4fac5ada5f13810e6419ef4467
   JPSVolumeButtonHandler: 53110330c9168ed325def93eabff39f0fe3e8082

@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:curl_logger_dio_interceptor/curl_logger_dio_interceptor.dart';
+import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:dio_log/interceptor/dio_log_interceptor.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_start/config/index.dart';
 import 'package:flutter_start/core/http/interceptors/index.dart';
 import 'package:flutter_start/core/utils/index.dart';
+import 'package:http_proxy/http_proxy.dart';
 
 import 'http.config.dart';
 import 'entity/http.entity.dart';
@@ -41,11 +46,41 @@ class HttpUtil {
     _dio.interceptors.add(HttpRequestInterceptor());
     _dio.interceptors.add(HttpErrorResponseInterceptor());
     _dio.interceptors.add(FailResponseInterceptor());
+
     if (kDebugMode) {
       _dio.interceptors.add(CurlLoggerDioInterceptor(printOnSuccess: false));
       // FIXME: 流、二进制文件会拦截报错保存
       _dio.interceptors.add(DioLogInterceptor());
     }
+
+    if (EnvConfig.canProxy == true) {
+      setProxy(_dio);
+    }
+  }
+
+  /// 代理抓包
+  /// https://segmentfault.com/a/1190000043487680
+  static void setProxy(Dio dioInstance) async {
+    HttpProxy httpProxy = await HttpProxy.createHttpProxy();
+    LoggerUtil.debug(
+        "systemProxy::$httpProxy, host->>${httpProxy.host},port->>${httpProxy.port}");
+
+    if (httpProxy.host == null || httpProxy.port == null) {
+      return;
+    }
+
+    (dioInstance.httpClientAdapter as DefaultHttpClientAdapter)
+        .onHttpClientCreate = (HttpClient client) {
+      client.findProxy = (uri) {
+        String proxy = "PROXY ${httpProxy.host}:${httpProxy.port}";
+        return proxy;
+      };
+      // 禁用证书校验
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+
+      return null;
+    };
   }
 
   /// 取消请求
